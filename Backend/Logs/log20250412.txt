@@ -1,0 +1,1001 @@
+2025-04-12 00:18:38.457 +05:00 [INF] User profile is available. Using 'C:\Users\usman electronics\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-12 00:18:40.128 +05:00 [INF] Now listening on: https://localhost:7208
+2025-04-12 00:18:40.737 +05:00 [INF] Now listening on: http://localhost:5237
+2025-04-12 00:18:42.050 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-12 00:18:42.118 +05:00 [INF] Hosting environment: Development
+2025-04-12 00:18:42.120 +05:00 [INF] Content root path: C:\Users\usman electronics\source\repos\Backend\Backend
+2025-04-12 00:18:42.131 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/index.html - null null
+2025-04-12 00:18:42.900 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/index.html - 200 null text/html;charset=utf-8 792.4026ms
+2025-04-12 00:18:43.080 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-12 00:18:43.081 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_vs/browserLink - null null
+2025-04-12 00:18:43.117 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 37.3215ms
+2025-04-12 00:18:43.206 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_vs/browserLink - 200 null text/javascript; charset=UTF-8 125.259ms
+2025-04-12 00:18:43.643 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - null null
+2025-04-12 00:18:43.672 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 28.7262ms
+2025-04-12 00:20:52.142 +05:00 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-04-12 00:20:52.265 +05:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-04-12 00:20:52.327 +05:00 [INF] Executed DbCommand (49ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2025-04-12 00:20:52.456 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2025-04-12 00:20:52.482 +05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-04-12 00:20:52.496 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-04-12 00:20:52.546 +05:00 [INF] Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-04-12 00:20:52.584 +05:00 [INF] Applying migration '20250411192035_InitialCreate'.
+2025-04-12 00:20:52.690 +05:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoles] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(256) NULL,
+    [NormalizedName] nvarchar(256) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoles] PRIMARY KEY ([Id])
+);
+2025-04-12 00:20:52.707 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUsers] (
+    [Id] nvarchar(450) NOT NULL,
+    [UserName] nvarchar(256) NULL,
+    [NormalizedUserName] nvarchar(256) NULL,
+    [Email] nvarchar(256) NULL,
+    [NormalizedEmail] nvarchar(256) NULL,
+    [EmailConfirmed] bit NOT NULL,
+    [PasswordHash] nvarchar(max) NULL,
+    [SecurityStamp] nvarchar(max) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [PhoneNumberConfirmed] bit NOT NULL,
+    [TwoFactorEnabled] bit NOT NULL,
+    [LockoutEnd] datetimeoffset NULL,
+    [LockoutEnabled] bit NOT NULL,
+    [AccessFailedCount] int NOT NULL,
+    CONSTRAINT [PK_AspNetUsers] PRIMARY KEY ([Id])
+);
+2025-04-12 00:20:52.728 +05:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoleClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [RoleId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE
+);
+2025-04-12 00:20:52.749 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [UserId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2025-04-12 00:20:52.765 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserLogins] (
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [ProviderKey] nvarchar(450) NOT NULL,
+    [ProviderDisplayName] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY ([LoginProvider], [ProviderKey]),
+    CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2025-04-12 00:20:52.783 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserRoles] (
+    [UserId] nvarchar(450) NOT NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2025-04-12 00:20:52.802 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserTokens] (
+    [UserId] nvarchar(450) NOT NULL,
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [Name] nvarchar(450) NOT NULL,
+    [Value] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY ([UserId], [LoginProvider], [Name]),
+    CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2025-04-12 00:20:52.825 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetRoleClaims_RoleId] ON [AspNetRoleClaims] ([RoleId]);
+2025-04-12 00:20:52.845 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [RoleNameIndex] ON [AspNetRoles] ([NormalizedName]) WHERE [NormalizedName] IS NOT NULL;
+2025-04-12 00:20:52.862 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetUserClaims_UserId] ON [AspNetUserClaims] ([UserId]);
+2025-04-12 00:20:52.876 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetUserLogins_UserId] ON [AspNetUserLogins] ([UserId]);
+2025-04-12 00:20:52.894 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetUserRoles_RoleId] ON [AspNetUserRoles] ([RoleId]);
+2025-04-12 00:20:52.911 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [EmailIndex] ON [AspNetUsers] ([NormalizedEmail]);
+2025-04-12 00:20:52.925 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [UserNameIndex] ON [AspNetUsers] ([NormalizedUserName]) WHERE [NormalizedUserName] IS NOT NULL;
+2025-04-12 00:20:52.956 +05:00 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250411192035_InitialCreate', N'9.0.3');
+2025-04-12 00:20:52.974 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2025-04-12 00:24:33.028 +05:00 [INF] User profile is available. Using 'C:\Users\usman electronics\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-12 00:24:34.173 +05:00 [INF] Now listening on: https://localhost:7208
+2025-04-12 00:24:34.527 +05:00 [INF] Now listening on: http://localhost:5237
+2025-04-12 00:24:35.781 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-12 00:24:36.488 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/index.html - null null
+2025-04-12 00:24:36.510 +05:00 [INF] Hosting environment: Development
+2025-04-12 00:24:36.518 +05:00 [INF] Content root path: C:\Users\usman electronics\source\repos\Backend\Backend
+2025-04-12 00:24:37.898 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/index.html - 200 null text/html;charset=utf-8 1444.4919ms
+2025-04-12 00:24:38.081 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-12 00:24:38.083 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_vs/browserLink - null null
+2025-04-12 00:24:38.129 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 50.2462ms
+2025-04-12 00:24:38.250 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_vs/browserLink - 200 null text/javascript; charset=UTF-8 166.8322ms
+2025-04-12 00:24:38.681 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - null null
+2025-04-12 00:24:38.768 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 87.626ms
+2025-04-12 00:24:53.261 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Auth/register - null null
+2025-04-12 00:24:53.287 +05:00 [INF] CORS policy execution successful.
+2025-04-12 00:24:53.290 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Auth/register - 204 null null 32.4106ms
+2025-04-12 00:24:53.296 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/register - application/json 107
+2025-04-12 00:24:53.306 +05:00 [INF] CORS policy execution successful.
+2025-04-12 00:24:53.346 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Register (Backend)'
+2025-04-12 00:24:53.400 +05:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(RegisterModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-12 00:24:53.882 +05:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`1[[System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-12 00:24:53.898 +05:00 [INF] Executed action Backend.Controllers.AuthController.Register (Backend) in 490.1629ms
+2025-04-12 00:24:53.902 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Register (Backend)'
+2025-04-12 00:24:53.911 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/register - 400 null application/json; charset=utf-8 614.8338ms
+2025-04-12 00:25:31.303 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/register - application/json 71
+2025-04-12 00:25:31.332 +05:00 [INF] CORS policy execution successful.
+2025-04-12 00:25:31.338 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Register (Backend)'
+2025-04-12 00:25:31.360 +05:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(RegisterModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-12 00:25:31.387 +05:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`1[[System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-12 00:25:31.391 +05:00 [INF] Executed action Backend.Controllers.AuthController.Register (Backend) in 27.6262ms
+2025-04-12 00:25:31.394 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Register (Backend)'
+2025-04-12 00:25:31.396 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/register - 400 null application/json; charset=utf-8 93.4174ms
+2025-04-12 00:26:09.104 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/register - application/json 81
+2025-04-12 00:26:09.165 +05:00 [INF] CORS policy execution successful.
+2025-04-12 00:26:09.172 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Register (Backend)'
+2025-04-12 00:26:09.174 +05:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(RegisterModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-12 00:26:09.210 +05:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`1[[System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-12 00:26:09.213 +05:00 [INF] Executed action Backend.Controllers.AuthController.Register (Backend) in 30.3645ms
+2025-04-12 00:26:09.215 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Register (Backend)'
+2025-04-12 00:26:09.217 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/register - 400 null application/json; charset=utf-8 112.6411ms
+2025-04-12 00:34:04.272 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/register - application/json 84
+2025-04-12 00:34:04.287 +05:00 [INF] CORS policy execution successful.
+2025-04-12 00:34:04.289 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Register (Backend)'
+2025-04-12 00:34:04.291 +05:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(RegisterModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-12 00:34:08.075 +05:00 [INF] Executed DbCommand (289ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-04-12 00:34:08.650 +05:00 [INF] Executed DbCommand (27ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 256), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTimeOffset), @p7='?' (Size = 256), @p8='?' (Size = 256), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (DbType = Boolean), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [AspNetUsers] ([Id], [AccessFailedCount], [ConcurrencyStamp], [Email], [EmailConfirmed], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [SecurityStamp], [TwoFactorEnabled], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14);
+2025-04-12 00:34:08.731 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-04-12 00:34:08.780 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-04-12 00:34:08.846 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [AspNetRoles] ([Id], [ConcurrencyStamp], [Name], [NormalizedName])
+VALUES (@p0, @p1, @p2, @p3);
+2025-04-12 00:34:08.950 +05:00 [INF] Executed DbCommand (69ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2025-04-12 00:34:09.050 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 450), @__p_1='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[UserId], [a].[RoleId]
+FROM [AspNetUserRoles] AS [a]
+WHERE [a].[UserId] = @__p_0 AND [a].[RoleId] = @__p_1
+2025-04-12 00:34:09.065 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2025-04-12 00:34:09.107 +05:00 [INF] Executed DbCommand (15ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-04-12 00:34:09.261 +05:00 [INF] Executed DbCommand (55ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 450), @p16='?' (Size = 450), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p17='?' (Size = 4000), @p4='?' (Size = 256), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTimeOffset), @p8='?' (Size = 256), @p9='?' (Size = 256), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AspNetUserRoles] ([RoleId], [UserId])
+VALUES (@p0, @p1);
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p2, [ConcurrencyStamp] = @p3, [Email] = @p4, [EmailConfirmed] = @p5, [LockoutEnabled] = @p6, [LockoutEnd] = @p7, [NormalizedEmail] = @p8, [NormalizedUserName] = @p9, [PasswordHash] = @p10, [PhoneNumber] = @p11, [PhoneNumberConfirmed] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
+OUTPUT 1
+WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
+2025-04-12 00:34:09.317 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-12 00:34:09.326 +05:00 [INF] Executed action Backend.Controllers.AuthController.Register (Backend) in 5031.2107ms
+2025-04-12 00:34:09.331 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Register (Backend)'
+2025-04-12 00:34:09.352 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/register - 200 null application/json; charset=utf-8 5080.9478ms
+2025-04-12 00:37:58.813 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Auth/register - null null
+2025-04-12 00:37:58.820 +05:00 [INF] CORS policy execution successful.
+2025-04-12 00:37:58.825 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Auth/register - 204 null null 14.5263ms
+2025-04-12 00:37:58.842 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/register - application/json 117
+2025-04-12 00:37:58.847 +05:00 [INF] CORS policy execution successful.
+2025-04-12 00:37:58.849 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Register (Backend)'
+2025-04-12 00:37:58.852 +05:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(RegisterModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-12 00:37:59.356 +05:00 [INF] Executed DbCommand (79ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-04-12 00:37:59.370 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 256), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTimeOffset), @p7='?' (Size = 256), @p8='?' (Size = 256), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (DbType = Boolean), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [AspNetUsers] ([Id], [AccessFailedCount], [ConcurrencyStamp], [Email], [EmailConfirmed], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [SecurityStamp], [TwoFactorEnabled], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14);
+2025-04-12 00:37:59.382 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-04-12 00:37:59.395 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2025-04-12 00:37:59.412 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[@__p_0='?' (Size = 450), @__p_1='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[UserId], [a].[RoleId]
+FROM [AspNetUserRoles] AS [a]
+WHERE [a].[UserId] = @__p_0 AND [a].[RoleId] = @__p_1
+2025-04-12 00:37:59.419 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2025-04-12 00:37:59.433 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-04-12 00:37:59.461 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 450), @p16='?' (Size = 450), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p17='?' (Size = 4000), @p4='?' (Size = 256), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTimeOffset), @p8='?' (Size = 256), @p9='?' (Size = 256), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AspNetUserRoles] ([RoleId], [UserId])
+VALUES (@p0, @p1);
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p2, [ConcurrencyStamp] = @p3, [Email] = @p4, [EmailConfirmed] = @p5, [LockoutEnabled] = @p6, [LockoutEnd] = @p7, [NormalizedEmail] = @p8, [NormalizedUserName] = @p9, [PasswordHash] = @p10, [PhoneNumber] = @p11, [PhoneNumberConfirmed] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
+OUTPUT 1
+WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
+2025-04-12 00:37:59.474 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-12 00:37:59.478 +05:00 [INF] Executed action Backend.Controllers.AuthController.Register (Backend) in 607.717ms
+2025-04-12 00:37:59.480 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Register (Backend)'
+2025-04-12 00:37:59.482 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/register - 200 null application/json; charset=utf-8 640.6125ms
+2025-04-12 00:38:30.745 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - null null
+2025-04-12 00:38:30.773 +05:00 [INF] CORS policy execution successful.
+2025-04-12 00:38:30.775 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - 204 null null 30.0069ms
+2025-04-12 00:38:30.781 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/login - application/json 53
+2025-04-12 00:38:30.788 +05:00 [INF] CORS policy execution successful.
+2025-04-12 00:38:30.789 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 00:38:30.803 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-12 00:38:30.910 +05:00 [INF] Executed DbCommand (37ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-12 00:38:31.315 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 507.7954ms
+2025-04-12 00:38:31.320 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 00:38:31.547 +05:00 [ERR] Something went wrong: The method or operation is not implemented.
+System.NotImplementedException: The method or operation is not implemented.
+   at Backend.Services.TokenService.Backend.Services.ITokenService.GenerateJwtToken(Users user) in C:\Users\usman electronics\source\repos\Backend\Backend\Services\TokenService.cs:line 52
+   at Backend.Controllers.AuthController.Login(LoginModel model) in C:\Users\usman electronics\source\repos\Backend\Backend\Controllers\AuthController.cs:line 79
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at ExceptionMiddleware.Invoke(HttpContext context) in C:\Users\usman electronics\source\repos\Backend\Backend\Middleware\ExceptionMiddleware.cs:line 16
+2025-04-12 00:38:31.655 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/login - 500 null null 874.4238ms
+2025-04-12 00:38:34.150 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/login - application/json 53
+2025-04-12 00:38:34.156 +05:00 [INF] CORS policy execution successful.
+2025-04-12 00:38:34.157 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 00:38:34.160 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-12 00:38:34.187 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-12 00:38:34.459 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 284.9422ms
+2025-04-12 00:38:34.462 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 00:38:34.641 +05:00 [ERR] Something went wrong: The method or operation is not implemented.
+System.NotImplementedException: The method or operation is not implemented.
+   at Backend.Services.TokenService.Backend.Services.ITokenService.GenerateJwtToken(Users user) in C:\Users\usman electronics\source\repos\Backend\Backend\Services\TokenService.cs:line 52
+   at Backend.Controllers.AuthController.Login(LoginModel model) in C:\Users\usman electronics\source\repos\Backend\Backend\Controllers\AuthController.cs:line 79
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at ExceptionMiddleware.Invoke(HttpContext context) in C:\Users\usman electronics\source\repos\Backend\Backend\Middleware\ExceptionMiddleware.cs:line 16
+2025-04-12 00:38:34.665 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/login - 500 null null 514.6563ms
+2025-04-12 00:39:52.325 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/login - application/json 62
+2025-04-12 00:39:52.343 +05:00 [INF] CORS policy execution successful.
+2025-04-12 00:39:52.347 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 00:39:52.349 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-12 00:39:52.367 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-12 00:39:52.828 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 476.0227ms
+2025-04-12 00:39:52.831 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 00:39:53.080 +05:00 [ERR] Something went wrong: The method or operation is not implemented.
+System.NotImplementedException: The method or operation is not implemented.
+   at Backend.Services.TokenService.Backend.Services.ITokenService.GenerateJwtToken(Users user) in C:\Users\usman electronics\source\repos\Backend\Backend\Services\TokenService.cs:line 52
+   at Backend.Controllers.AuthController.Login(LoginModel model) in C:\Users\usman electronics\source\repos\Backend\Backend\Controllers\AuthController.cs:line 79
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at ExceptionMiddleware.Invoke(HttpContext context) in C:\Users\usman electronics\source\repos\Backend\Backend\Middleware\ExceptionMiddleware.cs:line 16
+2025-04-12 00:39:53.100 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/login - 500 null null 775.477ms
+2025-04-12 00:48:35.391 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/login - application/json 51
+2025-04-12 00:48:35.398 +05:00 [INF] CORS policy execution successful.
+2025-04-12 00:48:35.400 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 00:48:35.405 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-12 00:48:35.655 +05:00 [INF] Executed DbCommand (15ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-12 00:48:35.798 +05:00 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType3`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-12 00:48:35.807 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 396.8398ms
+2025-04-12 00:48:35.820 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 00:48:35.823 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/login - 401 null application/json; charset=utf-8 431.6571ms
+2025-04-12 00:48:47.041 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/login - application/json 51
+2025-04-12 00:48:47.099 +05:00 [INF] CORS policy execution successful.
+2025-04-12 00:48:47.101 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 00:48:47.107 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-12 00:48:47.122 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-12 00:48:47.313 +05:00 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType3`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-12 00:48:47.316 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 203.642ms
+2025-04-12 00:48:47.321 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 00:48:47.324 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/login - 401 null application/json; charset=utf-8 282.4254ms
+2025-04-12 00:50:40.447 +05:00 [INF] User profile is available. Using 'C:\Users\usman electronics\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-12 00:50:42.071 +05:00 [INF] Now listening on: https://localhost:7208
+2025-04-12 00:50:42.074 +05:00 [INF] Now listening on: http://localhost:5237
+2025-04-12 00:50:42.553 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-12 00:50:42.589 +05:00 [INF] Hosting environment: Development
+2025-04-12 00:50:42.591 +05:00 [INF] Content root path: C:\Users\usman electronics\source\repos\Backend\Backend
+2025-04-12 00:50:44.283 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/index.html - null null
+2025-04-12 00:50:46.426 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/index.html - 200 null text/html;charset=utf-8 2162.0601ms
+2025-04-12 00:50:46.730 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_vs/browserLink - null null
+2025-04-12 00:50:46.730 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-12 00:50:46.823 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 91.9833ms
+2025-04-12 00:50:47.316 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_vs/browserLink - 200 null text/javascript; charset=UTF-8 586.3993ms
+2025-04-12 00:50:47.739 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - null null
+2025-04-12 00:50:47.884 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 145.1056ms
+2025-04-12 00:51:21.409 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/login - application/json 62
+2025-04-12 00:51:21.423 +05:00 [INF] CORS policy execution successful.
+2025-04-12 00:51:21.442 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 00:51:21.483 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-12 00:51:23.955 +05:00 [INF] Executed DbCommand (108ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-12 00:51:24.448 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 2952.9665ms
+2025-04-12 00:51:24.453 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 00:51:24.699 +05:00 [ERR] Something went wrong: The method or operation is not implemented.
+System.NotImplementedException: The method or operation is not implemented.
+   at Backend.Services.TokenService.Backend.Services.ITokenService.GenerateJwtToken(Users user) in C:\Users\usman electronics\source\repos\Backend\Backend\Services\TokenService.cs:line 52
+   at Backend.Controllers.AuthController.Login(LoginModel model) in C:\Users\usman electronics\source\repos\Backend\Backend\Controllers\AuthController.cs:line 79
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at ExceptionMiddleware.Invoke(HttpContext context) in C:\Users\usman electronics\source\repos\Backend\Backend\Middleware\ExceptionMiddleware.cs:line 16
+2025-04-12 00:51:24.763 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/login - 500 null null 3353.6981ms
+2025-04-12 00:53:40.480 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/index.html - null null
+2025-04-12 00:53:40.504 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/index.html - 200 null text/html;charset=utf-8 24.8779ms
+2025-04-12 00:53:40.728 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-12 00:53:40.735 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 6.7937ms
+2025-04-12 00:53:40.831 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_vs/browserLink - null null
+2025-04-12 00:53:40.881 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_vs/browserLink - 200 null text/javascript; charset=UTF-8 49.7614ms
+2025-04-12 00:53:42.300 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - null null
+2025-04-12 00:53:42.329 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 28.9754ms
+2025-04-12 00:54:04.624 +05:00 [INF] User profile is available. Using 'C:\Users\usman electronics\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-12 00:54:05.367 +05:00 [INF] Now listening on: https://localhost:7208
+2025-04-12 00:54:05.370 +05:00 [INF] Now listening on: http://localhost:5237
+2025-04-12 00:54:05.585 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-12 00:54:05.591 +05:00 [INF] Hosting environment: Development
+2025-04-12 00:54:05.592 +05:00 [INF] Content root path: C:\Users\usman electronics\source\repos\Backend\Backend
+2025-04-12 00:54:06.850 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/index.html - null null
+2025-04-12 00:54:07.396 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/index.html - 200 null text/html;charset=utf-8 561.6595ms
+2025-04-12 00:54:07.572 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-12 00:54:07.588 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_vs/browserLink - null null
+2025-04-12 00:54:07.654 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 82.7896ms
+2025-04-12 00:54:07.744 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_vs/browserLink - 200 null text/javascript; charset=UTF-8 159.4362ms
+2025-04-12 00:54:08.328 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - null null
+2025-04-12 00:54:08.773 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 444.8048ms
+2025-04-12 00:55:14.513 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/login - application/json 62
+2025-04-12 00:55:14.525 +05:00 [INF] CORS policy execution successful.
+2025-04-12 00:55:14.545 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 00:55:14.594 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-12 00:55:17.295 +05:00 [INF] Executed DbCommand (112ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-12 00:55:17.910 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 3306.5657ms
+2025-04-12 00:55:17.914 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 00:55:18.182 +05:00 [ERR] Something went wrong: The method or operation is not implemented.
+System.NotImplementedException: The method or operation is not implemented.
+   at Backend.Services.TokenService.Backend.Services.ITokenService.GenerateJwtToken(Users user) in C:\Users\usman electronics\source\repos\Backend\Backend\Services\TokenService.cs:line 52
+   at Backend.Controllers.AuthController.Login(LoginModel model) in C:\Users\usman electronics\source\repos\Backend\Backend\Controllers\AuthController.cs:line 79
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at ExceptionMiddleware.Invoke(HttpContext context) in C:\Users\usman electronics\source\repos\Backend\Backend\Middleware\ExceptionMiddleware.cs:line 16
+2025-04-12 00:55:18.287 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/login - 500 null application/json 3774.1343ms
+2025-04-12 00:57:20.741 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/index.html - null null
+2025-04-12 00:57:21.343 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/index.html - 200 null text/html;charset=utf-8 602.321ms
+2025-04-12 00:57:21.756 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_vs/browserLink - null null
+2025-04-12 00:57:21.758 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-12 00:57:21.785 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 26.5614ms
+2025-04-12 00:57:21.810 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_vs/browserLink - 200 null text/javascript; charset=UTF-8 54.3741ms
+2025-04-12 00:57:23.675 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - null null
+2025-04-12 00:57:23.764 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 89.2337ms
+2025-04-12 00:57:37.417 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/login - application/json 47
+2025-04-12 00:57:37.438 +05:00 [INF] CORS policy execution successful.
+2025-04-12 00:57:37.446 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 00:57:37.460 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-12 00:57:37.608 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-12 00:57:37.626 +05:00 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType3`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-12 00:57:37.638 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 171.6777ms
+2025-04-12 00:57:37.642 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 00:57:37.645 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/login - 401 null application/json; charset=utf-8 228.2146ms
+2025-04-12 00:58:07.911 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/login - application/json 62
+2025-04-12 00:58:07.935 +05:00 [INF] CORS policy execution successful.
+2025-04-12 00:58:07.942 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 00:58:07.945 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-12 00:58:08.086 +05:00 [INF] Executed DbCommand (67ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-12 00:58:08.474 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 523.3343ms
+2025-04-12 00:58:08.518 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 00:58:08.871 +05:00 [ERR] Something went wrong: The method or operation is not implemented.
+System.NotImplementedException: The method or operation is not implemented.
+   at Backend.Services.TokenService.Backend.Services.ITokenService.GenerateJwtToken(Users user)
+   at Backend.Controllers.AuthController.Login(LoginModel model)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at ExceptionMiddleware.Invoke(HttpContext context)
+2025-04-12 00:58:08.922 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/login - 500 null application/json 1011.5855ms
+2025-04-12 01:02:31.311 +05:00 [INF] User profile is available. Using 'C:\Users\usman electronics\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-12 01:02:32.005 +05:00 [INF] Now listening on: https://localhost:7208
+2025-04-12 01:02:32.009 +05:00 [INF] Now listening on: http://localhost:5237
+2025-04-12 01:02:32.448 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-12 01:02:32.450 +05:00 [INF] Hosting environment: Development
+2025-04-12 01:02:32.452 +05:00 [INF] Content root path: C:\Users\usman electronics\source\repos\Backend\Backend
+2025-04-12 01:02:35.385 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/index.html - null null
+2025-04-12 01:02:36.023 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/index.html - 200 null text/html;charset=utf-8 656.4765ms
+2025-04-12 01:02:36.067 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-12 01:02:36.094 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 27.6337ms
+2025-04-12 01:02:36.129 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_vs/browserLink - null null
+2025-04-12 01:02:36.293 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_vs/browserLink - 200 null text/javascript; charset=UTF-8 164.014ms
+2025-04-12 01:02:36.703 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - null null
+2025-04-12 01:02:36.739 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 36.0461ms
+2025-04-12 01:03:25.089 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/login - application/json 62
+2025-04-12 01:03:25.104 +05:00 [INF] CORS policy execution successful.
+2025-04-12 01:03:25.138 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 01:03:25.214 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-12 01:03:29.029 +05:00 [INF] Executed DbCommand (230ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-12 01:03:29.994 +05:00 [INF] Executed DbCommand (25ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-12 01:03:29.999 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`2[[System.Threading.Tasks.Task`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-12 01:03:30.251 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 5013.9284ms
+2025-04-12 01:03:30.260 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 01:03:30.533 +05:00 [ERR] Something went wrong: One or more errors occurred. (Value cannot be null. (Parameter 's'))
+System.AggregateException: One or more errors occurred. (Value cannot be null. (Parameter 's'))
+ ---> System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.Text.Encoding.GetBytes(String s)
+   at Backend.Services.TokenService.GenerateJwtToken(Users user) in C:\Users\usman electronics\source\repos\Backend\Backend\Services\TokenService.cs:line 36
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at ResultGetter(Object)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.WriteCore(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(PipeWriter pipeWriter, T rootValue, Int32 flushThreshold, CancellationToken cancellationToken, Object rootValueBoxed)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(PipeWriter pipeWriter, T rootValue, Int32 flushThreshold, CancellationToken cancellationToken, Object rootValueBoxed)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(PipeWriter pipeWriter, T rootValue, Int32 flushThreshold, CancellationToken cancellationToken, Object rootValueBoxed)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at ExceptionMiddleware.Invoke(HttpContext context) in C:\Users\usman electronics\source\repos\Backend\Backend\Middleware\ExceptionMiddleware.cs:line 18
+2025-04-12 01:03:30.696 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/login - 500 null application/json 5606.4572ms
+2025-04-12 01:06:45.526 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/index.html - null null
+2025-04-12 01:06:45.578 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/index.html - 200 null text/html;charset=utf-8 51.7989ms
+2025-04-12 01:06:46.140 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-12 01:06:46.147 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 7.3651ms
+2025-04-12 01:06:46.438 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_vs/browserLink - null null
+2025-04-12 01:06:46.484 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_vs/browserLink - 200 null text/javascript; charset=UTF-8 45.9068ms
+2025-04-12 01:06:47.708 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - null null
+2025-04-12 01:06:47.726 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 18.711ms
+2025-04-12 01:06:59.295 +05:00 [INF] User profile is available. Using 'C:\Users\usman electronics\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-12 01:06:59.787 +05:00 [INF] Now listening on: https://localhost:7208
+2025-04-12 01:06:59.789 +05:00 [INF] Now listening on: http://localhost:5237
+2025-04-12 01:07:00.133 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-12 01:07:00.135 +05:00 [INF] Hosting environment: Development
+2025-04-12 01:07:00.137 +05:00 [INF] Content root path: C:\Users\usman electronics\source\repos\Backend\Backend
+2025-04-12 01:07:01.462 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/index.html - null null
+2025-04-12 01:07:02.519 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/index.html - 200 null text/html;charset=utf-8 1094.0662ms
+2025-04-12 01:07:02.661 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-12 01:07:02.664 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_vs/browserLink - null null
+2025-04-12 01:07:02.840 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 178.8577ms
+2025-04-12 01:07:02.980 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_vs/browserLink - 200 null text/javascript; charset=UTF-8 316.4472ms
+2025-04-12 01:07:03.431 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - null null
+2025-04-12 01:07:03.747 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 327.8087ms
+2025-04-12 01:07:36.293 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/login - application/json 62
+2025-04-12 01:07:36.320 +05:00 [INF] CORS policy execution successful.
+2025-04-12 01:07:36.348 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 01:07:36.409 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-12 01:07:40.447 +05:00 [INF] Executed DbCommand (232ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-12 01:07:41.154 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-12 01:07:41.171 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`2[[System.Threading.Tasks.Task`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-12 01:07:41.312 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 4888.6534ms
+2025-04-12 01:07:41.327 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 01:07:41.348 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/login - 200 null application/json; charset=utf-8 5056.7068ms
+2025-04-12 01:08:15.603 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - null null
+2025-04-12 01:08:15.622 +05:00 [INF] CORS policy execution successful.
+2025-04-12 01:08:15.626 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - 204 null null 28.0271ms
+2025-04-12 01:08:15.631 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/login - application/json 53
+2025-04-12 01:08:15.637 +05:00 [INF] CORS policy execution successful.
+2025-04-12 01:08:15.642 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 01:08:15.646 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-12 01:08:15.886 +05:00 [INF] Executed DbCommand (21ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-12 01:08:16.156 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`2[[System.Threading.Tasks.Task`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-12 01:08:16.160 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-12 01:08:16.171 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 518.1276ms
+2025-04-12 01:08:16.174 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 01:08:16.180 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/login - 200 null application/json; charset=utf-8 549.8174ms
+2025-04-12 01:50:36.066 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - null null
+2025-04-12 01:50:36.066 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - null null
+2025-04-12 01:50:36.143 +05:00 [INF] CORS policy execution successful.
+2025-04-12 01:50:36.146 +05:00 [INF] CORS policy execution successful.
+2025-04-12 01:50:36.290 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - 204 null null 225.5881ms
+2025-04-12 01:50:36.288 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - 204 null null 230.9108ms
+2025-04-12 01:50:36.414 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - application/json null
+2025-04-12 01:50:36.455 +05:00 [INF] CORS policy execution successful.
+2025-04-12 01:50:36.493 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - 404 0 null 78.6388ms
+2025-04-12 01:50:36.507 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - application/json null
+2025-04-12 01:50:36.516 +05:00 [INF] CORS policy execution successful.
+2025-04-12 01:50:36.517 +05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7208/api/Dashboard/dashboardData, Response status code: 404
+2025-04-12 01:50:36.518 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - 404 0 null 10.9475ms
+2025-04-12 01:50:36.539 +05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7208/api/Dashboard/dashboardData, Response status code: 404
+2025-04-12 01:51:10.998 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - null null
+2025-04-12 01:51:11.026 +05:00 [INF] CORS policy execution successful.
+2025-04-12 01:51:11.029 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - 204 null null 30.9291ms
+2025-04-12 01:51:11.032 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/login - application/json 53
+2025-04-12 01:51:11.043 +05:00 [INF] CORS policy execution successful.
+2025-04-12 01:51:11.045 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 01:51:11.053 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-12 01:51:11.328 +05:00 [INF] Executed DbCommand (29ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-12 01:51:11.576 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`2[[System.Threading.Tasks.Task`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-12 01:51:11.587 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-12 01:51:11.596 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 537.9662ms
+2025-04-12 01:51:11.598 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 01:51:11.605 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/login - 200 null application/json; charset=utf-8 572.3669ms
+2025-04-12 01:51:11.678 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - null null
+2025-04-12 01:51:11.678 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - null null
+2025-04-12 01:51:11.700 +05:00 [INF] CORS policy execution successful.
+2025-04-12 01:51:11.707 +05:00 [INF] CORS policy execution successful.
+2025-04-12 01:51:11.709 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - 204 null null 31.4726ms
+2025-04-12 01:51:11.713 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - 204 null null 34.9441ms
+2025-04-12 01:51:11.729 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - application/json null
+2025-04-12 01:51:11.746 +05:00 [INF] CORS policy execution successful.
+2025-04-12 01:51:11.751 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - 404 0 null 21.58ms
+2025-04-12 01:51:11.760 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - application/json null
+2025-04-12 01:51:11.767 +05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7208/api/Dashboard/dashboardData, Response status code: 404
+2025-04-12 01:51:11.773 +05:00 [INF] CORS policy execution successful.
+2025-04-12 01:51:11.782 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - 404 0 null 22.2148ms
+2025-04-12 01:51:11.791 +05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7208/api/Dashboard/dashboardData, Response status code: 404
+2025-04-12 02:01:20.982 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - null null
+2025-04-12 02:01:20.982 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - null null
+2025-04-12 02:01:20.996 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:01:21.001 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:01:21.007 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - 204 null null 30.7582ms
+2025-04-12 02:01:21.008 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - 204 null null 31.6023ms
+2025-04-12 02:01:21.013 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - application/json null
+2025-04-12 02:01:21.040 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:01:21.045 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - 404 0 null 31.7753ms
+2025-04-12 02:01:21.048 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - application/json null
+2025-04-12 02:01:21.054 +05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7208/api/Dashboard/dashboardData, Response status code: 404
+2025-04-12 02:01:21.060 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:01:21.071 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - 404 0 null 23.2991ms
+2025-04-12 02:01:21.078 +05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7208/api/Dashboard/dashboardData, Response status code: 404
+2025-04-12 02:01:31.949 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - null null
+2025-04-12 02:01:31.955 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:01:31.958 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - 204 null null 8.7991ms
+2025-04-12 02:01:31.961 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - application/json null
+2025-04-12 02:01:31.972 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:01:31.976 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - 404 0 null 15.3976ms
+2025-04-12 02:01:31.983 +05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7208/api/Dashboard/dashboardData, Response status code: 404
+2025-04-12 02:08:01.840 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - null null
+2025-04-12 02:08:01.840 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - null null
+2025-04-12 02:08:01.847 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:08:01.852 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:08:01.855 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - 204 null null 14.9952ms
+2025-04-12 02:08:01.861 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - 204 null null 21.1156ms
+2025-04-12 02:08:01.861 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - application/json null
+2025-04-12 02:08:01.883 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:08:01.886 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - 404 0 null 25.2541ms
+2025-04-12 02:08:01.891 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - application/json null
+2025-04-12 02:08:01.895 +05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7208/api/Dashboard/dashboardData, Response status code: 404
+2025-04-12 02:08:01.900 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:08:01.910 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - 404 0 null 19.0838ms
+2025-04-12 02:08:01.916 +05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7208/api/Dashboard/dashboardData, Response status code: 404
+2025-04-12 02:09:05.036 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - null null
+2025-04-12 02:09:05.037 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - null null
+2025-04-12 02:09:05.042 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:09:05.051 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - 204 null null 15.175ms
+2025-04-12 02:09:05.048 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:09:05.058 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - application/json null
+2025-04-12 02:09:05.066 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - 204 null null 29.252ms
+2025-04-12 02:09:05.073 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:09:05.087 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - 404 0 null 29.8969ms
+2025-04-12 02:09:05.091 +05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7208/api/Dashboard/dashboardData, Response status code: 404
+2025-04-12 02:09:05.090 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - application/json null
+2025-04-12 02:09:05.104 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:09:05.107 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - 404 0 null 16.524ms
+2025-04-12 02:09:05.115 +05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7208/api/Dashboard/dashboardData, Response status code: 404
+2025-04-12 02:09:11.435 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - null null
+2025-04-12 02:09:11.435 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - null null
+2025-04-12 02:09:11.441 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:09:11.453 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:09:11.459 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - 204 null null 24.0753ms
+2025-04-12 02:09:11.459 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - 204 null null 23.8925ms
+2025-04-12 02:09:11.487 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - application/json null
+2025-04-12 02:09:11.496 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:09:11.499 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - 404 0 null 11.3471ms
+2025-04-12 02:09:11.502 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - application/json null
+2025-04-12 02:09:11.513 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:09:11.507 +05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7208/api/Dashboard/dashboardData, Response status code: 404
+2025-04-12 02:09:11.515 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - 404 0 null 12.954ms
+2025-04-12 02:09:11.531 +05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7208/api/Dashboard/dashboardData, Response status code: 404
+2025-04-12 02:10:13.032 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - null null
+2025-04-12 02:10:13.066 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:10:13.067 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - 204 null null 35.841ms
+2025-04-12 02:10:13.099 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - application/json null
+2025-04-12 02:10:13.105 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:10:13.107 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - 404 0 null 7.9768ms
+2025-04-12 02:10:13.115 +05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7208/api/Dashboard/dashboardData, Response status code: 404
+2025-04-12 02:10:13.659 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - application/json null
+2025-04-12 02:10:13.665 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:10:13.668 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - 404 0 null 9.6895ms
+2025-04-12 02:10:13.700 +05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7208/api/Dashboard/dashboardData, Response status code: 404
+2025-04-12 02:10:43.256 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - null null
+2025-04-12 02:10:43.274 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:10:43.279 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - 204 null null 22.9384ms
+2025-04-12 02:10:43.256 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - null null
+2025-04-12 02:10:43.301 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:10:43.299 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - application/json null
+2025-04-12 02:10:43.304 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - 204 null null 48.1375ms
+2025-04-12 02:10:43.330 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:10:43.341 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - 404 0 null 42.0884ms
+2025-04-12 02:10:43.347 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - application/json null
+2025-04-12 02:10:43.349 +05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7208/api/Dashboard/dashboardData, Response status code: 404
+2025-04-12 02:10:43.356 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:10:43.368 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - 404 0 null 20.7578ms
+2025-04-12 02:10:43.373 +05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7208/api/Dashboard/dashboardData, Response status code: 404
+2025-04-12 02:14:30.003 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - null null
+2025-04-12 02:14:30.028 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:14:30.031 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - 204 null null 28.1123ms
+2025-04-12 02:14:30.050 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - application/json null
+2025-04-12 02:14:30.062 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:14:30.065 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - 404 0 null 15.3641ms
+2025-04-12 02:14:30.078 +05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7208/api/Dashboard/dashboardData, Response status code: 404
+2025-04-12 02:15:06.213 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - null null
+2025-04-12 02:15:06.229 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:15:06.230 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - 204 null null 17.0766ms
+2025-04-12 02:15:06.236 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - application/json null
+2025-04-12 02:15:06.253 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:15:06.255 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - 404 0 null 19.4524ms
+2025-04-12 02:15:06.264 +05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7208/api/Dashboard/dashboardData, Response status code: 404
+2025-04-12 02:15:34.974 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - null null
+2025-04-12 02:15:34.986 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:15:34.988 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - 204 null null 19.9874ms
+2025-04-12 02:15:34.992 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - application/json null
+2025-04-12 02:15:35.007 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:15:35.053 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-12 02:15:35.077 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-12 02:15:35.080 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 302 0 null 87.7878ms
+2025-04-12 02:15:35.085 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/Account/Login?ReturnUrl=%2Fapi%2FDashboard - null null
+2025-04-12 02:15:35.094 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:15:35.095 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/Account/Login?ReturnUrl=%2Fapi%2FDashboard - 204 null null 10.4005ms
+2025-04-12 02:15:35.101 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/Account/Login?ReturnUrl=%2Fapi%2FDashboard - application/json null
+2025-04-12 02:15:35.118 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:15:35.121 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/Account/Login?ReturnUrl=%2Fapi%2FDashboard - 404 0 null 23.3088ms
+2025-04-12 02:15:35.128 +05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7208/Account/Login, Response status code: 404
+2025-04-12 02:25:15.427 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - null null
+2025-04-12 02:25:15.441 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - null null
+2025-04-12 02:25:15.454 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:25:15.461 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:25:15.464 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - 204 null null 36.6314ms
+2025-04-12 02:25:15.467 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - 204 null null 26.5447ms
+2025-04-12 02:25:15.477 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - application/json null
+2025-04-12 02:25:15.490 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:25:15.547 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-12 02:25:15.554 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-12 02:25:15.556 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 302 0 null 78.7863ms
+2025-04-12 02:25:15.628 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - application/json null
+2025-04-12 02:25:15.657 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:25:15.697 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-12 02:25:15.702 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-12 02:25:15.704 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 302 0 null 76.4665ms
+2025-04-12 02:25:15.751 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/Account/Login?ReturnUrl=%2Fapi%2FDashboard - null null
+2025-04-12 02:25:15.751 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/Account/Login?ReturnUrl=%2Fapi%2FDashboard - null null
+2025-04-12 02:25:15.757 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:25:15.768 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/Account/Login?ReturnUrl=%2Fapi%2FDashboard - 204 null null 19.6838ms
+2025-04-12 02:25:15.763 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:25:15.773 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/Account/Login?ReturnUrl=%2Fapi%2FDashboard - application/json null
+2025-04-12 02:25:15.846 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/Account/Login?ReturnUrl=%2Fapi%2FDashboard - 204 null null 98.3341ms
+2025-04-12 02:25:15.854 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:25:15.862 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/Account/Login?ReturnUrl=%2Fapi%2FDashboard - 404 0 null 91.6586ms
+2025-04-12 02:25:15.868 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/Account/Login?ReturnUrl=%2Fapi%2FDashboard - application/json null
+2025-04-12 02:25:15.873 +05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7208/Account/Login, Response status code: 404
+2025-04-12 02:25:15.879 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:25:15.889 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/Account/Login?ReturnUrl=%2Fapi%2FDashboard - 404 0 null 21.3933ms
+2025-04-12 02:25:15.895 +05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7208/Account/Login, Response status code: 404
+2025-04-12 02:26:07.953 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - null null
+2025-04-12 02:26:07.963 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:26:07.967 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - 204 null null 13.733ms
+2025-04-12 02:26:07.976 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - application/json null
+2025-04-12 02:26:07.993 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:26:07.995 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - 404 0 null 18.8905ms
+2025-04-12 02:26:08.001 +05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7208/api/Dashboard/dashboardData, Response status code: 404
+2025-04-12 02:41:03.286 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - null null
+2025-04-12 02:41:03.288 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - null null
+2025-04-12 02:41:03.315 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:41:03.321 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:41:03.323 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - 204 null null 37.6794ms
+2025-04-12 02:41:03.327 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard/dashboardData - 204 null null 38.5983ms
+2025-04-12 02:41:03.349 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - application/json null
+2025-04-12 02:41:03.438 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:41:03.440 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - 404 0 null 91.8934ms
+2025-04-12 02:41:03.445 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - application/json null
+2025-04-12 02:41:03.457 +05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7208/api/Dashboard/dashboardData, Response status code: 404
+2025-04-12 02:41:03.462 +05:00 [INF] CORS policy execution successful.
+2025-04-12 02:41:03.511 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard/dashboardData - 404 0 null 66.6912ms
+2025-04-12 02:41:03.520 +05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7208/api/Dashboard/dashboardData, Response status code: 404
+2025-04-12 18:16:05.934 +05:00 [INF] User profile is available. Using 'C:\Users\usman electronics\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-12 18:16:08.377 +05:00 [INF] Now listening on: https://localhost:7208
+2025-04-12 18:16:08.393 +05:00 [INF] Now listening on: http://localhost:5237
+2025-04-12 18:16:08.837 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-12 18:16:08.862 +05:00 [INF] Hosting environment: Development
+2025-04-12 18:16:08.916 +05:00 [INF] Content root path: C:\Users\usman electronics\source\repos\Backend\Backend
+2025-04-12 18:16:10.173 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/index.html - null null
+2025-04-12 18:16:10.873 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/index.html - 200 null text/html;charset=utf-8 717.8583ms
+2025-04-12 18:16:14.635 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-12 18:16:14.646 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_vs/browserLink - null null
+2025-04-12 18:16:14.653 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 18.0153ms
+2025-04-12 18:16:14.849 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_vs/browserLink - 200 null text/javascript; charset=UTF-8 203.9927ms
+2025-04-12 18:16:18.928 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - null null
+2025-04-12 18:16:18.975 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 47.7645ms
+2025-04-12 18:24:01.891 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - null null
+2025-04-12 18:24:01.923 +05:00 [INF] CORS policy execution successful.
+2025-04-12 18:24:01.928 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - 204 null null 37.5397ms
+2025-04-12 18:24:01.934 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/login - application/json 53
+2025-04-12 18:24:01.941 +05:00 [INF] CORS policy execution successful.
+2025-04-12 18:24:01.963 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 18:24:02.010 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-12 18:24:05.219 +05:00 [INF] Executed DbCommand (176ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-12 18:24:05.812 +05:00 [INF] Executed DbCommand (23ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-12 18:24:05.830 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`2[[System.Threading.Tasks.Task`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-12 18:24:05.965 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 3946.0404ms
+2025-04-12 18:24:05.969 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 18:24:06.004 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/login - 200 null application/json; charset=utf-8 4069.5769ms
+2025-04-12 21:00:09.387 +05:00 [INF] User profile is available. Using 'C:\Users\usman electronics\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-12 21:00:11.492 +05:00 [INF] Now listening on: https://localhost:7208
+2025-04-12 21:00:11.501 +05:00 [INF] Now listening on: http://localhost:5237
+2025-04-12 21:00:12.572 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-12 21:00:12.837 +05:00 [INF] Hosting environment: Development
+2025-04-12 21:00:12.839 +05:00 [INF] Content root path: C:\Users\usman electronics\source\repos\Backend\Backend
+2025-04-12 21:00:16.206 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/index.html - null null
+2025-04-12 21:00:17.083 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/index.html - 200 null text/html;charset=utf-8 900.6106ms
+2025-04-12 21:00:17.362 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_vs/browserLink - null null
+2025-04-12 21:00:17.365 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-12 21:00:17.527 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 160.3256ms
+2025-04-12 21:00:17.606 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_vs/browserLink - 200 null text/javascript; charset=UTF-8 242.9466ms
+2025-04-12 21:00:18.064 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - null null
+2025-04-12 21:00:18.276 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 211.7479ms
+2025-04-12 21:00:44.420 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - null null
+2025-04-12 21:00:44.461 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-12 21:00:44.493 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-12 21:00:44.497 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 302 0 null 77.8302ms
+2025-04-12 21:00:44.505 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/Account/Login?ReturnUrl=%2Fapi%2FDashboard - null null
+2025-04-12 21:00:44.516 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/Account/Login?ReturnUrl=%2Fapi%2FDashboard - 404 0 null 11.491ms
+2025-04-12 21:00:44.530 +05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7208/Account/Login, Response status code: 404
+2025-04-12 21:01:22.665 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Auth/register - null null
+2025-04-12 21:01:22.690 +05:00 [INF] CORS policy execution successful.
+2025-04-12 21:01:22.710 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Auth/register - 204 null null 45.3316ms
+2025-04-12 21:01:22.719 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/register - application/json 123
+2025-04-12 21:01:22.725 +05:00 [INF] CORS policy execution successful.
+2025-04-12 21:01:22.733 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Register (Backend)'
+2025-04-12 21:01:22.799 +05:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(RegisterModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-12 21:01:25.886 +05:00 [INF] Executed DbCommand (170ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-04-12 21:01:26.307 +05:00 [INF] Executed DbCommand (31ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 256), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTimeOffset), @p7='?' (Size = 256), @p8='?' (Size = 256), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (DbType = Boolean), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [AspNetUsers] ([Id], [AccessFailedCount], [ConcurrencyStamp], [Email], [EmailConfirmed], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [SecurityStamp], [TwoFactorEnabled], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14);
+2025-04-12 21:01:26.362 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-04-12 21:01:26.434 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2025-04-12 21:01:26.498 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (Size = 450), @__p_1='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[UserId], [a].[RoleId]
+FROM [AspNetUserRoles] AS [a]
+WHERE [a].[UserId] = @__p_0 AND [a].[RoleId] = @__p_1
+2025-04-12 21:01:26.513 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2025-04-12 21:01:26.537 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-04-12 21:01:26.644 +05:00 [INF] Executed DbCommand (36ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 450), @p16='?' (Size = 450), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p17='?' (Size = 4000), @p4='?' (Size = 256), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTimeOffset), @p8='?' (Size = 256), @p9='?' (Size = 256), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AspNetUserRoles] ([RoleId], [UserId])
+VALUES (@p0, @p1);
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p2, [ConcurrencyStamp] = @p3, [Email] = @p4, [EmailConfirmed] = @p5, [LockoutEnabled] = @p6, [LockoutEnd] = @p7, [NormalizedEmail] = @p8, [NormalizedUserName] = @p9, [PasswordHash] = @p10, [PhoneNumber] = @p11, [PhoneNumberConfirmed] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
+OUTPUT 1
+WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;
+2025-04-12 21:01:26.697 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-12 21:01:26.722 +05:00 [INF] Executed action Backend.Controllers.AuthController.Register (Backend) in 3912.7616ms
+2025-04-12 21:01:26.726 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Register (Backend)'
+2025-04-12 21:01:26.813 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/register - 200 null application/json; charset=utf-8 4094.5324ms
+2025-04-12 21:01:53.537 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - null null
+2025-04-12 21:01:53.572 +05:00 [INF] CORS policy execution successful.
+2025-04-12 21:01:53.574 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - 204 null null 38.8803ms
+2025-04-12 21:01:53.578 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/login - application/json 55
+2025-04-12 21:01:53.592 +05:00 [INF] CORS policy execution successful.
+2025-04-12 21:01:53.594 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 21:01:53.610 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-12 21:01:53.878 +05:00 [INF] Executed DbCommand (82ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-12 21:01:54.289 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`2[[System.Threading.Tasks.Task`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-12 21:01:54.294 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-12 21:01:54.489 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 869.6654ms
+2025-04-12 21:01:54.493 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-12 21:01:54.496 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/login - 200 null application/json; charset=utf-8 918.5499ms

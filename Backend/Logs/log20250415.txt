@@ -1,0 +1,36 @@
+2025-04-15 23:49:00.610 +05:00 [INF] User profile is available. Using 'C:\Users\usman electronics\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-15 23:49:07.689 +05:00 [INF] Executed DbCommand (193ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-04-15 23:49:08.169 +05:00 [INF] Executed DbCommand (17ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-15 23:49:09.776 +05:00 [INF] Now listening on: https://localhost:7208
+2025-04-15 23:49:09.780 +05:00 [INF] Now listening on: http://localhost:5237
+2025-04-15 23:49:10.333 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-15 23:49:10.583 +05:00 [INF] Hosting environment: Development
+2025-04-15 23:49:10.597 +05:00 [INF] Content root path: C:\Users\usman electronics\source\repos\Backend\Backend
+2025-04-15 23:49:13.828 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger - null null
+2025-04-15 23:49:14.391 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger - 301 0 null 584.8011ms
+2025-04-15 23:49:14.408 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/index.html - null null
+2025-04-15 23:49:14.769 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/index.html - 200 null text/html;charset=utf-8 360.8829ms
+2025-04-15 23:49:14.805 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/swagger-ui.css - null null
+2025-04-15 23:49:14.806 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/swagger-ui-bundle.js - null null
+2025-04-15 23:49:14.814 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/swagger-ui-standalone-preset.js - null null
+2025-04-15 23:49:14.982 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-15 23:49:14.982 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_vs/browserLink - null null
+2025-04-15 23:49:15.008 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 25.914ms
+2025-04-15 23:49:15.312 +05:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-04-15 23:49:15.335 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/swagger-ui.css - 200 152034 text/css 529.5231ms
+2025-04-15 23:49:15.374 +05:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-04-15 23:49:15.386 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/swagger-ui-standalone-preset.js - 200 230280 text/javascript 571.5449ms
+2025-04-15 23:49:16.121 +05:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-04-15 23:49:16.192 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/swagger-ui-bundle.js - 200 1456926 text/javascript 1386.0996ms
+2025-04-15 23:49:16.186 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_vs/browserLink - 200 null text/javascript; charset=UTF-8 1202.0411ms
+2025-04-15 23:49:16.788 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - null null
+2025-04-15 23:49:16.954 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 166.3116ms
+2025-04-15 23:49:17.102 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/favicon-32x32.png - null null
+2025-04-15 23:49:17.402 +05:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-04-15 23:49:17.411 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/favicon-32x32.png - 200 628 image/png 309.5309ms

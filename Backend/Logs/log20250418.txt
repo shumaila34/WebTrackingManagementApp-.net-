@@ -1,0 +1,452 @@
+2025-04-18 10:48:28.236 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - null null
+2025-04-18 10:48:28.258 +05:00 [INF] CORS policy execution successful.
+2025-04-18 10:48:28.262 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - 204 null null 27.886ms
+2025-04-18 10:48:28.289 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/login - application/json 54
+2025-04-18 10:48:28.301 +05:00 [INF] CORS policy execution successful.
+2025-04-18 10:48:28.303 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-18 10:48:28.306 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-18 10:48:28.481 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-18 10:48:28.717 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-18 10:48:28.726 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-18 10:48:28.739 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-18 10:48:28.745 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 431.6383ms
+2025-04-18 10:48:28.751 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-18 10:48:28.754 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/login - 200 null application/json; charset=utf-8 474.1581ms
+2025-04-18 10:48:28.818 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - null null
+2025-04-18 10:48:28.820 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - null null
+2025-04-18 10:48:28.823 +05:00 [INF] CORS policy execution successful.
+2025-04-18 10:48:28.840 +05:00 [INF] CORS policy execution successful.
+2025-04-18 10:48:28.848 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - 204 null null 29.626ms
+2025-04-18 10:48:28.852 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - 204 null null 32.3687ms
+2025-04-18 10:48:28.866 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - application/json null
+2025-04-18 10:48:28.876 +05:00 [INF] CORS policy execution successful.
+2025-04-18 10:48:28.878 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-18 10:48:28.881 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-18 10:48:28.917 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - application/json null
+2025-04-18 10:48:28.920 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 401 null application/json 53.8375ms
+2025-04-18 10:48:28.924 +05:00 [INF] CORS policy execution successful.
+2025-04-18 10:48:28.952 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-18 10:48:28.955 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-18 10:48:28.983 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 401 null application/json 66.714ms
+2025-04-18 10:53:01.609 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/login - application/json 47
+2025-04-18 10:53:01.620 +05:00 [INF] CORS policy execution successful.
+2025-04-18 10:53:01.622 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-18 10:53:01.624 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-18 10:53:01.647 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-18 10:53:01.659 +05:00 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType3`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-18 10:53:01.668 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 37.7485ms
+2025-04-18 10:53:01.678 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-18 10:53:01.683 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/login - 401 null application/json; charset=utf-8 73.8898ms
+2025-04-18 11:01:19.738 +05:00 [INF] Request starting HTTP/1.1 POST https://localhost:7208/api/Auth/login - application/json 74
+2025-04-18 11:01:19.744 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-18 11:01:19.746 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-18 11:01:19.955 +05:00 [INF] Executed DbCommand (21ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-18 11:01:20.132 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-18 11:01:20.139 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-18 11:01:20.146 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-18 11:01:20.156 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 400.4895ms
+2025-04-18 11:01:20.158 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-18 11:01:20.161 +05:00 [INF] Request finished HTTP/1.1 POST https://localhost:7208/api/Auth/login - 200 null application/json; charset=utf-8 423.1075ms
+2025-04-18 11:03:29.856 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - null null
+2025-04-18 11:03:29.864 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-18 11:03:29.867 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-18 11:03:29.869 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 401 null application/json 13.5718ms
+2025-04-18 11:03:59.363 +05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7208/api/Dashboard - application/json 74
+2025-04-18 11:03:59.368 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-18 11:03:59.372 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-18 11:03:59.374 +05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7208/api/Dashboard - 401 null application/json 11.1434ms
+2025-04-18 11:05:54.229 +05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7208/api/Dashboard - application/json 11
+2025-04-18 11:05:54.262 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-18 11:05:54.266 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-18 11:05:54.270 +05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7208/api/Dashboard - 401 null application/json 40.0343ms
+2025-04-18 11:11:26.050 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - null null
+2025-04-18 11:11:26.066 +05:00 [INF] CORS policy execution successful.
+2025-04-18 11:11:26.068 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - 204 null null 18.2626ms
+2025-04-18 11:11:26.075 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/login - application/json 54
+2025-04-18 11:11:26.084 +05:00 [INF] CORS policy execution successful.
+2025-04-18 11:11:26.089 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-18 11:11:26.092 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-18 11:11:26.213 +05:00 [INF] Executed DbCommand (17ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-18 11:11:26.374 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-18 11:11:26.388 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-18 11:11:26.398 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-18 11:11:26.403 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 303.4169ms
+2025-04-18 11:11:26.406 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-18 11:11:26.412 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/login - 200 null application/json; charset=utf-8 337.705ms
+2025-04-18 11:11:26.463 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - null null
+2025-04-18 11:11:26.465 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - null null
+2025-04-18 11:11:26.481 +05:00 [INF] CORS policy execution successful.
+2025-04-18 11:11:26.478 +05:00 [INF] CORS policy execution successful.
+2025-04-18 11:11:26.486 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - 204 null null 23.1214ms
+2025-04-18 11:11:26.482 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - 204 null null 17.3809ms
+2025-04-18 11:11:26.492 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - application/json null
+2025-04-18 11:11:26.509 +05:00 [INF] CORS policy execution successful.
+2025-04-18 11:11:26.513 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-18 11:11:26.517 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-18 11:11:26.523 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 401 null application/json 30.673ms
+2025-04-18 11:11:26.572 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - application/json null
+2025-04-18 11:11:26.594 +05:00 [INF] CORS policy execution successful.
+2025-04-18 11:11:26.603 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-18 11:11:26.610 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-18 11:11:26.622 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 401 null application/json 50.7612ms
+2025-04-18 11:11:45.895 +05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7208/api/Dashboard - application/json 4
+2025-04-18 11:11:45.905 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-18 11:11:45.907 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-18 11:11:45.910 +05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7208/api/Dashboard - 401 null application/json 14.7485ms
+2025-04-18 11:12:40.293 +05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7208/api/Dashboard - application/json 4
+2025-04-18 11:12:40.299 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-18 11:12:40.302 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-18 11:12:40.305 +05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7208/api/Dashboard - 401 null application/json 12.052ms
+2025-04-18 11:14:23.656 +05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7208/api/Dashboard - application/json 4
+2025-04-18 11:14:23.663 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-18 11:14:23.667 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-18 11:14:23.669 +05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7208/api/Dashboard - 401 null application/json 12.9407ms
+2025-04-18 11:33:49.381 +05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7208/api/Dashboard - application/json 4
+2025-04-18 11:33:49.389 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-18 11:33:49.393 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-18 11:33:49.395 +05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7208/api/Dashboard - 401 null application/json 13.9492ms
+2025-04-18 11:34:03.975 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - null null
+2025-04-18 11:34:03.999 +05:00 [INF] CORS policy execution successful.
+2025-04-18 11:34:04.009 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - 204 null null 34.1158ms
+2025-04-18 11:34:04.036 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/login - application/json 54
+2025-04-18 11:34:04.052 +05:00 [INF] CORS policy execution successful.
+2025-04-18 11:34:04.054 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-18 11:34:04.070 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-18 11:34:04.371 +05:00 [INF] Executed DbCommand (37ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-18 11:34:04.803 +05:00 [INF] Executed DbCommand (167ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-18 11:34:04.816 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-18 11:34:04.829 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-18 11:34:04.838 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 763.2498ms
+2025-04-18 11:34:04.846 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-18 11:34:04.849 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/login - 200 null application/json; charset=utf-8 812.9985ms
+2025-04-18 11:34:04.917 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - null null
+2025-04-18 11:34:04.917 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - null null
+2025-04-18 11:34:04.930 +05:00 [INF] CORS policy execution successful.
+2025-04-18 11:34:04.937 +05:00 [INF] CORS policy execution successful.
+2025-04-18 11:34:04.939 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - 204 null null 21.9771ms
+2025-04-18 11:34:04.943 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - 204 null null 25.7319ms
+2025-04-18 11:34:04.945 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - application/json null
+2025-04-18 11:34:04.966 +05:00 [INF] CORS policy execution successful.
+2025-04-18 11:34:04.968 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-18 11:34:04.973 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-18 11:34:04.978 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 401 null application/json 32.9542ms
+2025-04-18 11:34:05.015 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - application/json null
+2025-04-18 11:34:05.046 +05:00 [INF] CORS policy execution successful.
+2025-04-18 11:34:05.050 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-18 11:34:05.236 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-18 11:34:05.305 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 401 null application/json 291.1241ms
+2025-04-18 11:40:27.590 +05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7208/api/Dashboard - application/json 4
+2025-04-18 11:40:27.596 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-18 11:40:27.598 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-18 11:40:27.602 +05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7208/api/Dashboard - 401 null application/json 12.8271ms
+2025-04-18 11:57:09.929 +05:00 [INF] User profile is available. Using 'C:\Users\usman electronics\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-18 11:57:15.386 +05:00 [INF] Executed DbCommand (216ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-04-18 11:57:15.722 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-18 11:57:17.945 +05:00 [INF] Now listening on: https://localhost:7208
+2025-04-18 11:57:17.948 +05:00 [INF] Now listening on: http://localhost:5237
+2025-04-18 11:57:18.345 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-18 11:57:18.358 +05:00 [INF] Hosting environment: Development
+2025-04-18 11:57:18.362 +05:00 [INF] Content root path: C:\Users\usman electronics\source\repos\Backend\Backend
+2025-04-18 11:57:19.771 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/index.html - null null
+2025-04-18 11:57:20.414 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/index.html - 200 null text/html;charset=utf-8 664.1166ms
+2025-04-18 11:57:20.426 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-18 11:57:20.426 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_vs/browserLink - null null
+2025-04-18 11:57:20.454 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 28.4393ms
+2025-04-18 11:57:20.674 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_vs/browserLink - 200 null text/javascript; charset=UTF-8 248.062ms
+2025-04-18 11:57:20.777 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - null null
+2025-04-18 11:57:21.023 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 246.5066ms
+2025-04-18 11:57:28.842 +05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7208/api/Dashboard - application/json 4
+2025-04-18 11:57:28.897 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-18 11:57:28.930 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-18 11:57:28.934 +05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7208/api/Dashboard - 401 null application/json 92.0943ms
+2025-04-18 11:57:36.307 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - null null
+2025-04-18 11:57:36.333 +05:00 [INF] CORS policy execution successful.
+2025-04-18 11:57:36.383 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - 204 null null 75.6804ms
+2025-04-18 11:57:36.388 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/login - application/json 54
+2025-04-18 11:57:36.400 +05:00 [INF] CORS policy execution successful.
+2025-04-18 11:57:36.412 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-18 11:57:36.475 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-18 11:57:36.710 +05:00 [INF] Executed DbCommand (17ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-18 11:57:37.079 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-18 11:57:37.112 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-18 11:57:37.312 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-18 11:57:37.339 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 850.6668ms
+2025-04-18 11:57:37.369 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-18 11:57:37.435 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/login - 200 null application/json; charset=utf-8 1047.5ms
+2025-04-18 11:57:37.485 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - null null
+2025-04-18 11:57:37.510 +05:00 [INF] CORS policy execution successful.
+2025-04-18 11:57:37.485 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - null null
+2025-04-18 11:57:37.513 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - 204 null null 28.7389ms
+2025-04-18 11:57:37.519 +05:00 [INF] CORS policy execution successful.
+2025-04-18 11:57:37.520 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - application/json null
+2025-04-18 11:57:37.527 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - 204 null null 42.0341ms
+2025-04-18 11:57:37.533 +05:00 [INF] CORS policy execution successful.
+2025-04-18 11:57:37.545 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-18 11:57:37.549 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-18 11:57:37.552 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 401 null application/json 31.8667ms
+2025-04-18 11:57:37.577 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - application/json null
+2025-04-18 11:57:37.585 +05:00 [INF] CORS policy execution successful.
+2025-04-18 11:57:37.593 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-18 11:57:37.596 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-18 11:57:37.600 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 401 null application/json 22.8651ms
+2025-04-18 11:59:12.016 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - null null
+2025-04-18 11:59:12.070 +05:00 [INF] CORS policy execution successful.
+2025-04-18 11:59:12.074 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - 204 null null 56.3092ms
+2025-04-18 11:59:12.080 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/login - application/json 54
+2025-04-18 11:59:12.091 +05:00 [INF] CORS policy execution successful.
+2025-04-18 11:59:12.093 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-18 11:59:12.097 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-18 11:59:12.175 +05:00 [INF] Executed DbCommand (23ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-18 11:59:12.507 +05:00 [INF] Executed DbCommand (63ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-18 11:59:12.533 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-18 11:59:12.540 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-18 11:59:12.544 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 442.8432ms
+2025-04-18 11:59:12.546 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-18 11:59:12.549 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/login - 200 null application/json; charset=utf-8 469.3368ms
+2025-04-18 11:59:12.595 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - null null
+2025-04-18 11:59:12.600 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - null null
+2025-04-18 11:59:12.621 +05:00 [INF] CORS policy execution successful.
+2025-04-18 11:59:12.616 +05:00 [INF] CORS policy execution successful.
+2025-04-18 11:59:12.623 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - 204 null null 22.6425ms
+2025-04-18 11:59:12.625 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - 204 null null 30.2476ms
+2025-04-18 11:59:12.634 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - application/json null
+2025-04-18 11:59:12.655 +05:00 [INF] CORS policy execution successful.
+2025-04-18 11:59:12.657 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-18 11:59:12.659 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-18 11:59:12.677 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 401 null application/json 43.0083ms
+2025-04-18 11:59:12.710 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - application/json null
+2025-04-18 11:59:12.731 +05:00 [INF] CORS policy execution successful.
+2025-04-18 11:59:12.734 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-18 11:59:12.737 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-18 11:59:12.793 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 401 null application/json 83.1725ms
+2025-04-18 11:59:13.731 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/login - application/json 54
+2025-04-18 11:59:13.747 +05:00 [INF] CORS policy execution successful.
+2025-04-18 11:59:13.757 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-18 11:59:13.774 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-18 11:59:13.797 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-18 11:59:13.961 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-18 11:59:14.018 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-18 11:59:14.032 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-18 11:59:14.039 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 260.9127ms
+2025-04-18 11:59:14.043 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-18 11:59:14.046 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/login - 200 null application/json; charset=utf-8 314.6389ms
+2025-04-18 11:59:14.089 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - application/json null
+2025-04-18 11:59:14.097 +05:00 [INF] CORS policy execution successful.
+2025-04-18 11:59:14.099 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-18 11:59:14.102 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-18 11:59:14.105 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 401 null application/json 16.2109ms
+2025-04-18 11:59:14.145 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - application/json null
+2025-04-18 11:59:14.156 +05:00 [INF] CORS policy execution successful.
+2025-04-18 11:59:14.158 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-18 11:59:14.165 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-18 11:59:14.308 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 401 null application/json 163.4438ms
+2025-04-18 12:00:40.785 +05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7208/api/Dashboard - application/json 4
+2025-04-18 12:00:40.790 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-18 12:00:40.794 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-18 12:00:40.800 +05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7208/api/Dashboard - 401 null application/json 15.5923ms
+2025-04-18 18:54:57.603 +05:00 [INF] User profile is available. Using 'C:\Users\usman electronics\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-18 18:55:17.116 +05:00 [INF] Executed DbCommand (2,148ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-04-18 18:55:22.136 +05:00 [INF] Executed DbCommand (2,211ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-18 18:55:31.820 +05:00 [INF] Now listening on: https://localhost:7208
+2025-04-18 18:55:32.484 +05:00 [INF] Now listening on: http://localhost:5237
+2025-04-18 18:55:33.979 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-18 18:55:34.857 +05:00 [INF] Hosting environment: Development
+2025-04-18 18:55:36.261 +05:00 [INF] Content root path: C:\Users\usman electronics\source\repos\Backend\Backend
+2025-04-18 18:56:02.288 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger - null null
+2025-04-18 18:56:05.652 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger - 301 0 null 3383.0254ms
+2025-04-18 18:56:05.979 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/index.html - null null
+2025-04-18 18:56:08.453 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/index.html - 200 null text/html;charset=utf-8 2473.5278ms
+2025-04-18 19:25:12.750 +05:00 [INF] User profile is available. Using 'C:\Users\usman electronics\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-18 19:25:20.845 +05:00 [INF] Executed DbCommand (3,081ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-04-18 19:25:21.264 +05:00 [INF] Executed DbCommand (16ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-18 19:25:23.852 +05:00 [INF] Now listening on: https://localhost:7208
+2025-04-18 19:25:23.854 +05:00 [INF] Now listening on: http://localhost:5237
+2025-04-18 19:25:24.969 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-18 19:25:25.020 +05:00 [INF] Hosting environment: Development
+2025-04-18 19:25:25.067 +05:00 [INF] Content root path: C:\Users\usman electronics\source\repos\Backend\Backend
+2025-04-18 19:25:29.024 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/index.html - null null
+2025-04-18 19:25:30.273 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/index.html - 200 null text/html;charset=utf-8 1280.915ms
+2025-04-18 19:25:30.431 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-18 19:25:30.433 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_vs/browserLink - null null
+2025-04-18 19:25:30.639 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 206.6603ms
+2025-04-18 19:25:31.229 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_vs/browserLink - 200 null text/javascript; charset=UTF-8 796.1007ms
+2025-04-18 19:25:34.593 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - null null
+2025-04-18 19:25:34.778 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 185.217ms
+2025-04-18 19:26:12.116 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - null null
+2025-04-18 19:26:12.141 +05:00 [INF] CORS policy execution successful.
+2025-04-18 19:26:12.151 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - 204 null null 35.0579ms
+2025-04-18 19:26:12.161 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/login - application/json 55
+2025-04-18 19:26:12.194 +05:00 [INF] CORS policy execution successful.
+2025-04-18 19:26:12.247 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-18 19:26:12.356 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-18 19:26:12.814 +05:00 [INF] Executed DbCommand (16ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-18 19:26:13.246 +05:00 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType3`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-18 19:26:13.398 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 771.5848ms
+2025-04-18 19:26:13.778 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-18 19:26:13.795 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/login - 401 null application/json; charset=utf-8 1634.4168ms
+2025-04-18 19:27:02.885 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - null null
+2025-04-18 19:27:03.000 +05:00 [INF] CORS policy execution successful.
+2025-04-18 19:27:03.008 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - 204 null null 123.21ms
+2025-04-18 19:27:03.025 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/login - application/json 54
+2025-04-18 19:27:03.047 +05:00 [INF] CORS policy execution successful.
+2025-04-18 19:27:03.053 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-18 19:27:03.056 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-18 19:27:03.176 +05:00 [INF] Executed DbCommand (59ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-18 19:27:03.865 +05:00 [INF] Executed DbCommand (110ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-18 19:27:04.333 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-18 19:27:04.589 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-18 19:27:04.604 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 1542.9216ms
+2025-04-18 19:27:04.607 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-18 19:27:04.611 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/login - 200 null application/json; charset=utf-8 1585.6882ms
+2025-04-18 19:27:04.875 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - null null
+2025-04-18 19:27:04.879 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - null null
+2025-04-18 19:27:04.948 +05:00 [INF] CORS policy execution successful.
+2025-04-18 19:27:04.952 +05:00 [INF] CORS policy execution successful.
+2025-04-18 19:27:04.955 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - 204 null null 79.9989ms
+2025-04-18 19:27:04.962 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - 204 null null 83.246ms
+2025-04-18 19:27:04.982 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - application/json null
+2025-04-18 19:27:04.994 +05:00 [INF] CORS policy execution successful.
+2025-04-18 19:27:05.015 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-18 19:27:05.025 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-18 19:27:05.068 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 401 null application/json 88.178ms
+2025-04-18 19:27:05.273 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - application/json null
+2025-04-18 19:27:05.325 +05:00 [INF] CORS policy execution successful.
+2025-04-18 19:27:05.329 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-04-18 19:27:05.336 +05:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2025-04-18 19:27:05.339 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 401 null application/json 66.5031ms

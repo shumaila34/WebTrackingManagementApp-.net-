@@ -1,0 +1,737 @@
+2025-04-22 00:01:00.798 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - null null
+2025-04-22 00:01:00.848 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:01:00.857 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - 204 null null 60.2724ms
+2025-04-22 00:01:00.890 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/login - application/json 54
+2025-04-22 00:01:00.912 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:01:01.034 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-22 00:01:01.119 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-22 00:01:01.634 +05:00 [INF] Executed DbCommand (36ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-22 00:01:02.740 +05:00 [INF] Executed DbCommand (174ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-22 00:01:02.771 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-22 00:01:03.062 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-22 00:01:03.345 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 2173.1208ms
+2025-04-22 00:01:03.349 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-22 00:01:03.403 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/login - 200 null application/json; charset=utf-8 2484.6079ms
+2025-04-22 00:01:03.472 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - null null
+2025-04-22 00:01:03.473 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - null null
+2025-04-22 00:01:03.796 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:01:03.814 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:01:03.816 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - 204 null null 343.8816ms
+2025-04-22 00:01:03.845 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - application/json null
+2025-04-22 00:01:03.821 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - 204 null null 348.499ms
+2025-04-22 00:01:03.900 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:01:04.071 +05:00 [INF] Executing endpoint 'Backend.Controllers.DashboardController.GetDashboardData (Backend)'
+2025-04-22 00:01:04.085 +05:00 [INF] Route matched with {action = "GetDashboardData", controller = "Dashboard"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetDashboardData() on controller Backend.Controllers.DashboardController (Backend).
+2025-04-22 00:01:04.325 +05:00 [INF] Executed DbCommand (74ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'Completed' AND [t].[UserId] = @__userId_0
+2025-04-22 00:01:04.348 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'InProgress' AND [t].[UserId] = @__userId_0
+2025-04-22 00:01:04.365 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'Pending' AND [t].[UserId] = @__userId_0
+2025-04-22 00:01:04.372 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType7`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType6`3[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 00:01:04.385 +05:00 [INF] Executed action Backend.Controllers.DashboardController.GetDashboardData (Backend) in 295.1231ms
+2025-04-22 00:01:04.388 +05:00 [INF] Executed endpoint 'Backend.Controllers.DashboardController.GetDashboardData (Backend)'
+2025-04-22 00:01:04.389 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - application/json null
+2025-04-22 00:01:04.395 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:01:04.391 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 200 null application/json; charset=utf-8 546.0938ms
+2025-04-22 00:01:04.410 +05:00 [INF] Executing endpoint 'Backend.Controllers.DashboardController.GetDashboardData (Backend)'
+2025-04-22 00:01:04.413 +05:00 [INF] Route matched with {action = "GetDashboardData", controller = "Dashboard"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetDashboardData() on controller Backend.Controllers.DashboardController (Backend).
+2025-04-22 00:01:04.430 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'Completed' AND [t].[UserId] = @__userId_0
+2025-04-22 00:01:04.443 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'InProgress' AND [t].[UserId] = @__userId_0
+2025-04-22 00:01:04.461 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'Pending' AND [t].[UserId] = @__userId_0
+2025-04-22 00:01:04.466 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType7`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType6`3[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 00:01:04.471 +05:00 [INF] Executed action Backend.Controllers.DashboardController.GetDashboardData (Backend) in 47.9222ms
+2025-04-22 00:01:04.474 +05:00 [INF] Executed endpoint 'Backend.Controllers.DashboardController.GetDashboardData (Backend)'
+2025-04-22 00:01:04.476 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 200 null application/json; charset=utf-8 88.1164ms
+2025-04-22 00:01:15.563 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Task - null null
+2025-04-22 00:01:15.564 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Task - null null
+2025-04-22 00:01:15.571 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:01:15.576 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:01:15.580 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Task - 204 null null 16.0968ms
+2025-04-22 00:01:15.578 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Task - 204 null null 14.8865ms
+2025-04-22 00:01:15.599 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Task - null null
+2025-04-22 00:01:15.650 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:01:15.659 +05:00 [INF] Executing endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:01:15.677 +05:00 [INF] Route matched with {action = "GetTasks", controller = "Task"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTasks() on controller Backend.Controllers.TaskController (Backend).
+2025-04-22 00:01:15.799 +05:00 [INF] Executed DbCommand (24ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-04-22 00:01:15.885 +05:00 [INF] Executed DbCommand (36ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-22 00:01:15.939 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Category], [t].[Description], [t].[DueDate], [t].[Priority], [t].[Status], [t].[Title], [t].[UserId]
+FROM [Tasks] AS [t]
+WHERE [t].[UserId] = @__userId_0
+2025-04-22 00:01:16.010 +05:00 [INF] Successfully fetched tasks for user 13d5a5ac-aa99-4067-aecb-fadb05a212a2
+2025-04-22 00:01:16.193 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Backend.Model.TaskModel, Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 00:01:16.271 +05:00 [INF] Executed action Backend.Controllers.TaskController.GetTasks (Backend) in 570.8081ms
+2025-04-22 00:01:16.275 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Task - null null
+2025-04-22 00:01:16.275 +05:00 [INF] Executed endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:01:16.280 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:01:16.284 +05:00 [INF] Executing endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:01:16.282 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Task - 200 null application/json; charset=utf-8 683.3655ms
+2025-04-22 00:01:16.290 +05:00 [INF] Route matched with {action = "GetTasks", controller = "Task"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTasks() on controller Backend.Controllers.TaskController (Backend).
+2025-04-22 00:01:16.346 +05:00 [INF] Executed DbCommand (43ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-04-22 00:01:16.561 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-22 00:01:16.648 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Category], [t].[Description], [t].[DueDate], [t].[Priority], [t].[Status], [t].[Title], [t].[UserId]
+FROM [Tasks] AS [t]
+WHERE [t].[UserId] = @__userId_0
+2025-04-22 00:01:16.672 +05:00 [INF] Successfully fetched tasks for user 13d5a5ac-aa99-4067-aecb-fadb05a212a2
+2025-04-22 00:01:16.675 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Backend.Model.TaskModel, Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 00:01:16.680 +05:00 [INF] Executed action Backend.Controllers.TaskController.GetTasks (Backend) in 381.8859ms
+2025-04-22 00:01:16.700 +05:00 [INF] Executed endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:01:16.709 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Task - 200 null application/json; charset=utf-8 435.0216ms
+2025-04-22 00:01:29.448 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Task - null null
+2025-04-22 00:01:29.456 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Task - null null
+2025-04-22 00:01:29.468 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:01:29.476 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:01:29.492 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Task - 204 null null 36.4841ms
+2025-04-22 00:01:29.489 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Task - 204 null null 41.4283ms
+2025-04-22 00:01:29.513 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Task - null null
+2025-04-22 00:01:29.532 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:01:29.583 +05:00 [INF] Executing endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:01:29.666 +05:00 [INF] Route matched with {action = "GetTasks", controller = "Task"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTasks() on controller Backend.Controllers.TaskController (Backend).
+2025-04-22 00:01:29.683 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-04-22 00:01:29.703 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-22 00:01:29.713 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Category], [t].[Description], [t].[DueDate], [t].[Priority], [t].[Status], [t].[Title], [t].[UserId]
+FROM [Tasks] AS [t]
+WHERE [t].[UserId] = @__userId_0
+2025-04-22 00:01:29.720 +05:00 [INF] Successfully fetched tasks for user 13d5a5ac-aa99-4067-aecb-fadb05a212a2
+2025-04-22 00:01:29.722 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Backend.Model.TaskModel, Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 00:01:29.789 +05:00 [INF] Executed action Backend.Controllers.TaskController.GetTasks (Backend) in 117.6995ms
+2025-04-22 00:01:29.801 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Task - null null
+2025-04-22 00:01:29.900 +05:00 [INF] Executed endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:01:29.904 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:01:29.906 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Task - 200 null application/json; charset=utf-8 393.7384ms
+2025-04-22 00:01:29.908 +05:00 [INF] Executing endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:01:29.918 +05:00 [INF] Route matched with {action = "GetTasks", controller = "Task"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTasks() on controller Backend.Controllers.TaskController (Backend).
+2025-04-22 00:01:29.935 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-04-22 00:01:29.995 +05:00 [INF] Executed DbCommand (23ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-22 00:01:30.476 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Category], [t].[Description], [t].[DueDate], [t].[Priority], [t].[Status], [t].[Title], [t].[UserId]
+FROM [Tasks] AS [t]
+WHERE [t].[UserId] = @__userId_0
+2025-04-22 00:01:30.989 +05:00 [INF] Successfully fetched tasks for user 13d5a5ac-aa99-4067-aecb-fadb05a212a2
+2025-04-22 00:01:31.006 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Backend.Model.TaskModel, Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 00:01:31.089 +05:00 [INF] Executed action Backend.Controllers.TaskController.GetTasks (Backend) in 1167.1969ms
+2025-04-22 00:01:31.127 +05:00 [INF] Executed endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:01:31.259 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Task - 200 null application/json; charset=utf-8 1457.7993ms
+2025-04-22 00:01:45.238 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Profile - null null
+2025-04-22 00:01:45.241 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Profile - null null
+2025-04-22 00:01:45.276 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:01:45.281 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:01:45.283 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Profile - 204 null null 45.0013ms
+2025-04-22 00:01:45.284 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Profile - 204 null null 43.7384ms
+2025-04-22 00:01:45.288 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Profile - application/json null
+2025-04-22 00:01:45.302 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:01:45.307 +05:00 [INF] Executing endpoint 'TaskManagementSystem.Controllers.ProfileController.GetProfile (Backend)'
+2025-04-22 00:01:45.317 +05:00 [INF] Route matched with {action = "GetProfile", controller = "Profile"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProfile() on controller TaskManagementSystem.Controllers.ProfileController (Backend).
+2025-04-22 00:01:45.353 +05:00 [INF] Executed DbCommand (24ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-22 00:01:45.374 +05:00 [WRN] User with email urwa not found while fetching profile
+2025-04-22 00:01:45.380 +05:00 [INF] Executing NotFoundObjectResult, writing value of type 'System.String'.
+2025-04-22 00:01:45.383 +05:00 [INF] Executed action TaskManagementSystem.Controllers.ProfileController.GetProfile (Backend) in 58.9593ms
+2025-04-22 00:01:45.386 +05:00 [INF] Executed endpoint 'TaskManagementSystem.Controllers.ProfileController.GetProfile (Backend)'
+2025-04-22 00:01:45.390 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Profile - application/json null
+2025-04-22 00:01:45.393 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Profile - 404 null text/plain; charset=utf-8 105.3381ms
+2025-04-22 00:01:45.399 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:01:45.409 +05:00 [INF] Executing endpoint 'TaskManagementSystem.Controllers.ProfileController.GetProfile (Backend)'
+2025-04-22 00:01:45.411 +05:00 [INF] Route matched with {action = "GetProfile", controller = "Profile"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProfile() on controller TaskManagementSystem.Controllers.ProfileController (Backend).
+2025-04-22 00:01:45.425 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-22 00:01:45.460 +05:00 [WRN] User with email urwa not found while fetching profile
+2025-04-22 00:01:45.466 +05:00 [INF] Executing NotFoundObjectResult, writing value of type 'System.String'.
+2025-04-22 00:01:45.488 +05:00 [INF] Executed action TaskManagementSystem.Controllers.ProfileController.GetProfile (Backend) in 72.3427ms
+2025-04-22 00:01:45.492 +05:00 [INF] Executed endpoint 'TaskManagementSystem.Controllers.ProfileController.GetProfile (Backend)'
+2025-04-22 00:01:45.495 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Profile - 404 null text/plain; charset=utf-8 106.4526ms
+2025-04-22 00:02:18.896 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Task - null null
+2025-04-22 00:02:18.896 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Task - null null
+2025-04-22 00:02:18.910 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:02:18.921 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:02:18.924 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Task - 204 null null 27.5986ms
+2025-04-22 00:02:18.928 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Task - 204 null null 31.533ms
+2025-04-22 00:02:18.987 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Task - null null
+2025-04-22 00:02:19.255 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:02:19.259 +05:00 [INF] Executing endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:02:19.265 +05:00 [INF] Route matched with {action = "GetTasks", controller = "Task"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTasks() on controller Backend.Controllers.TaskController (Backend).
+2025-04-22 00:02:19.286 +05:00 [INF] Executed DbCommand (11ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-04-22 00:02:19.305 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-22 00:02:19.361 +05:00 [INF] Executed DbCommand (27ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Category], [t].[Description], [t].[DueDate], [t].[Priority], [t].[Status], [t].[Title], [t].[UserId]
+FROM [Tasks] AS [t]
+WHERE [t].[UserId] = @__userId_0
+2025-04-22 00:02:19.703 +05:00 [INF] Successfully fetched tasks for user 13d5a5ac-aa99-4067-aecb-fadb05a212a2
+2025-04-22 00:02:19.708 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Backend.Model.TaskModel, Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 00:02:19.735 +05:00 [INF] Executed action Backend.Controllers.TaskController.GetTasks (Backend) in 464.1099ms
+2025-04-22 00:02:19.761 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Task - null null
+2025-04-22 00:02:19.770 +05:00 [INF] Executed endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:02:19.777 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:02:19.782 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Task - 200 null application/json; charset=utf-8 794.9012ms
+2025-04-22 00:02:19.785 +05:00 [INF] Executing endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:02:19.798 +05:00 [INF] Route matched with {action = "GetTasks", controller = "Task"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTasks() on controller Backend.Controllers.TaskController (Backend).
+2025-04-22 00:02:19.822 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-04-22 00:02:20.081 +05:00 [INF] Executed DbCommand (17ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-22 00:02:20.138 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Category], [t].[Description], [t].[DueDate], [t].[Priority], [t].[Status], [t].[Title], [t].[UserId]
+FROM [Tasks] AS [t]
+WHERE [t].[UserId] = @__userId_0
+2025-04-22 00:02:20.152 +05:00 [INF] Successfully fetched tasks for user 13d5a5ac-aa99-4067-aecb-fadb05a212a2
+2025-04-22 00:02:20.161 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Backend.Model.TaskModel, Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 00:02:20.168 +05:00 [INF] Executed action Backend.Controllers.TaskController.GetTasks (Backend) in 362.7865ms
+2025-04-22 00:02:20.173 +05:00 [INF] Executed endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:02:20.186 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Task - 200 null application/json; charset=utf-8 425.3453ms
+2025-04-22 00:02:25.757 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Task - null null
+2025-04-22 00:02:25.760 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Task - null null
+2025-04-22 00:02:25.845 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:02:25.853 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:02:25.862 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Task - 204 null null 101.5507ms
+2025-04-22 00:02:25.961 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Task - null null
+2025-04-22 00:02:25.858 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Task - 204 null null 100.4428ms
+2025-04-22 00:02:26.618 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:02:26.637 +05:00 [INF] Executing endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:02:26.640 +05:00 [INF] Route matched with {action = "GetTasks", controller = "Task"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTasks() on controller Backend.Controllers.TaskController (Backend).
+2025-04-22 00:02:26.678 +05:00 [INF] Executed DbCommand (22ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-04-22 00:02:27.548 +05:00 [INF] Executed DbCommand (16ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-22 00:02:27.571 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Category], [t].[Description], [t].[DueDate], [t].[Priority], [t].[Status], [t].[Title], [t].[UserId]
+FROM [Tasks] AS [t]
+WHERE [t].[UserId] = @__userId_0
+2025-04-22 00:02:27.627 +05:00 [INF] Successfully fetched tasks for user 13d5a5ac-aa99-4067-aecb-fadb05a212a2
+2025-04-22 00:02:27.817 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Backend.Model.TaskModel, Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 00:02:27.845 +05:00 [INF] Executed action Backend.Controllers.TaskController.GetTasks (Backend) in 1193.0249ms
+2025-04-22 00:02:27.850 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Task - null null
+2025-04-22 00:02:27.856 +05:00 [INF] Executed endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:02:27.865 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:02:27.869 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Task - 200 null application/json; charset=utf-8 1909.0472ms
+2025-04-22 00:02:27.875 +05:00 [INF] Executing endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:02:27.888 +05:00 [INF] Route matched with {action = "GetTasks", controller = "Task"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTasks() on controller Backend.Controllers.TaskController (Backend).
+2025-04-22 00:02:27.950 +05:00 [INF] Executed DbCommand (46ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-04-22 00:02:28.282 +05:00 [INF] Executed DbCommand (18ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-22 00:02:28.312 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Category], [t].[Description], [t].[DueDate], [t].[Priority], [t].[Status], [t].[Title], [t].[UserId]
+FROM [Tasks] AS [t]
+WHERE [t].[UserId] = @__userId_0
+2025-04-22 00:02:28.325 +05:00 [INF] Successfully fetched tasks for user 13d5a5ac-aa99-4067-aecb-fadb05a212a2
+2025-04-22 00:02:28.328 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Backend.Model.TaskModel, Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 00:02:28.333 +05:00 [INF] Executed action Backend.Controllers.TaskController.GetTasks (Backend) in 436.5044ms
+2025-04-22 00:02:28.340 +05:00 [INF] Executed endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:02:28.345 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Task - 200 null application/json; charset=utf-8 495.4702ms
+2025-04-22 00:02:34.251 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Task - null null
+2025-04-22 00:02:34.251 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Task - null null
+2025-04-22 00:02:34.308 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:02:34.316 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:02:34.319 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Task - 204 null null 68.5699ms
+2025-04-22 00:02:34.324 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Task - 204 null null 73.1942ms
+2025-04-22 00:02:34.329 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Task - null null
+2025-04-22 00:02:34.353 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:02:34.358 +05:00 [INF] Executing endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:02:34.364 +05:00 [INF] Route matched with {action = "GetTasks", controller = "Task"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTasks() on controller Backend.Controllers.TaskController (Backend).
+2025-04-22 00:02:34.416 +05:00 [INF] Executed DbCommand (41ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-04-22 00:02:34.649 +05:00 [INF] Executed DbCommand (169ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-22 00:02:35.703 +05:00 [INF] Executed DbCommand (16ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Category], [t].[Description], [t].[DueDate], [t].[Priority], [t].[Status], [t].[Title], [t].[UserId]
+FROM [Tasks] AS [t]
+WHERE [t].[UserId] = @__userId_0
+2025-04-22 00:02:37.087 +05:00 [INF] Successfully fetched tasks for user 13d5a5ac-aa99-4067-aecb-fadb05a212a2
+2025-04-22 00:02:37.123 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Backend.Model.TaskModel, Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 00:02:37.326 +05:00 [INF] Executed action Backend.Controllers.TaskController.GetTasks (Backend) in 2955.8984ms
+2025-04-22 00:02:37.384 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Task - null null
+2025-04-22 00:02:37.391 +05:00 [INF] Executed endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:02:37.405 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:02:37.412 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Task - 200 null application/json; charset=utf-8 3083.5034ms
+2025-04-22 00:02:37.498 +05:00 [INF] Executing endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:02:37.519 +05:00 [INF] Route matched with {action = "GetTasks", controller = "Task"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTasks() on controller Backend.Controllers.TaskController (Backend).
+2025-04-22 00:02:37.541 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-04-22 00:02:37.810 +05:00 [INF] Executed DbCommand (16ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-22 00:02:37.845 +05:00 [INF] Executed DbCommand (20ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Category], [t].[Description], [t].[DueDate], [t].[Priority], [t].[Status], [t].[Title], [t].[UserId]
+FROM [Tasks] AS [t]
+WHERE [t].[UserId] = @__userId_0
+2025-04-22 00:02:38.088 +05:00 [INF] Successfully fetched tasks for user 13d5a5ac-aa99-4067-aecb-fadb05a212a2
+2025-04-22 00:02:38.091 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Backend.Model.TaskModel, Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 00:02:38.102 +05:00 [INF] Executed action Backend.Controllers.TaskController.GetTasks (Backend) in 575.5921ms
+2025-04-22 00:02:38.108 +05:00 [INF] Executed endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:02:38.116 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Task - 200 null application/json; charset=utf-8 732.4038ms
+2025-04-22 00:03:05.816 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Task - null null
+2025-04-22 00:03:05.886 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Task - null null
+2025-04-22 00:03:07.003 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:03:07.080 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:03:07.241 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Task - 204 null null 1424.7544ms
+2025-04-22 00:03:07.243 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Task - 204 null null 1356.8583ms
+2025-04-22 00:03:07.250 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Task - null null
+2025-04-22 00:03:07.285 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:03:07.289 +05:00 [INF] Executing endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:03:07.359 +05:00 [INF] Route matched with {action = "GetTasks", controller = "Task"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTasks() on controller Backend.Controllers.TaskController (Backend).
+2025-04-22 00:03:07.625 +05:00 [INF] Executed DbCommand (66ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-04-22 00:03:08.160 +05:00 [INF] Executed DbCommand (74ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-22 00:03:08.302 +05:00 [INF] Executed DbCommand (83ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Category], [t].[Description], [t].[DueDate], [t].[Priority], [t].[Status], [t].[Title], [t].[UserId]
+FROM [Tasks] AS [t]
+WHERE [t].[UserId] = @__userId_0
+2025-04-22 00:03:08.578 +05:00 [INF] Successfully fetched tasks for user 13d5a5ac-aa99-4067-aecb-fadb05a212a2
+2025-04-22 00:03:08.591 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Backend.Model.TaskModel, Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 00:03:08.611 +05:00 [INF] Executed action Backend.Controllers.TaskController.GetTasks (Backend) in 1056.0732ms
+2025-04-22 00:03:08.624 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Task - null null
+2025-04-22 00:03:08.658 +05:00 [INF] Executed endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:03:08.668 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:03:08.671 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Task - 200 null application/json; charset=utf-8 1421.6047ms
+2025-04-22 00:03:08.676 +05:00 [INF] Executing endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:03:08.690 +05:00 [INF] Route matched with {action = "GetTasks", controller = "Task"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTasks() on controller Backend.Controllers.TaskController (Backend).
+2025-04-22 00:03:08.722 +05:00 [INF] Executed DbCommand (18ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-04-22 00:03:09.195 +05:00 [INF] Executed DbCommand (23ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-22 00:03:09.364 +05:00 [INF] Executed DbCommand (36ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Category], [t].[Description], [t].[DueDate], [t].[Priority], [t].[Status], [t].[Title], [t].[UserId]
+FROM [Tasks] AS [t]
+WHERE [t].[UserId] = @__userId_0
+2025-04-22 00:03:09.393 +05:00 [INF] Successfully fetched tasks for user 13d5a5ac-aa99-4067-aecb-fadb05a212a2
+2025-04-22 00:03:09.400 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Backend.Model.TaskModel, Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 00:03:09.435 +05:00 [INF] Executed action Backend.Controllers.TaskController.GetTasks (Backend) in 733.4417ms
+2025-04-22 00:03:09.627 +05:00 [INF] Executed endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:03:09.632 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Task - 200 null application/json; charset=utf-8 1007.6903ms
+2025-04-22 00:03:18.739 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Task - null null
+2025-04-22 00:03:18.748 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Task - null null
+2025-04-22 00:03:19.294 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:03:19.312 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:03:19.318 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Task - 204 null null 569.9486ms
+2025-04-22 00:03:19.315 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Task - 204 null null 575.9834ms
+2025-04-22 00:03:19.358 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Task - null null
+2025-04-22 00:03:19.391 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:03:19.395 +05:00 [INF] Executing endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:03:19.399 +05:00 [INF] Route matched with {action = "GetTasks", controller = "Task"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTasks() on controller Backend.Controllers.TaskController (Backend).
+2025-04-22 00:03:19.467 +05:00 [INF] Executed DbCommand (60ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-04-22 00:03:19.903 +05:00 [INF] Executed DbCommand (96ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-22 00:03:20.371 +05:00 [INF] Executed DbCommand (21ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Category], [t].[Description], [t].[DueDate], [t].[Priority], [t].[Status], [t].[Title], [t].[UserId]
+FROM [Tasks] AS [t]
+WHERE [t].[UserId] = @__userId_0
+2025-04-22 00:03:20.392 +05:00 [INF] Successfully fetched tasks for user 13d5a5ac-aa99-4067-aecb-fadb05a212a2
+2025-04-22 00:03:20.410 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Backend.Model.TaskModel, Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 00:03:20.606 +05:00 [INF] Executed action Backend.Controllers.TaskController.GetTasks (Backend) in 1200.7256ms
+2025-04-22 00:03:20.958 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - null null
+2025-04-22 00:03:20.615 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Task - null null
+2025-04-22 00:03:20.967 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - null null
+2025-04-22 00:03:21.588 +05:00 [INF] Executed endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:03:21.646 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:03:21.654 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:03:21.664 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:03:21.683 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - 204 null null 715.7534ms
+2025-04-22 00:03:21.672 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - 204 null null 713.6689ms
+2025-04-22 00:03:21.680 +05:00 [INF] Executing endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:03:21.669 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Task - 200 null application/json; charset=utf-8 2311.6651ms
+2025-04-22 00:03:21.715 +05:00 [INF] Route matched with {action = "GetTasks", controller = "Task"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTasks() on controller Backend.Controllers.TaskController (Backend).
+2025-04-22 00:03:22.513 +05:00 [INF] Executed DbCommand (776ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-04-22 00:03:22.549 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - application/json null
+2025-04-22 00:03:22.944 +05:00 [INF] Executed DbCommand (62ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-22 00:03:22.984 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:03:23.008 +05:00 [INF] Executing endpoint 'Backend.Controllers.DashboardController.GetDashboardData (Backend)'
+2025-04-22 00:03:23.012 +05:00 [INF] Route matched with {action = "GetDashboardData", controller = "Dashboard"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetDashboardData() on controller Backend.Controllers.DashboardController (Backend).
+2025-04-22 00:03:23.053 +05:00 [INF] Executed DbCommand (57ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Category], [t].[Description], [t].[DueDate], [t].[Priority], [t].[Status], [t].[Title], [t].[UserId]
+FROM [Tasks] AS [t]
+WHERE [t].[UserId] = @__userId_0
+2025-04-22 00:03:23.149 +05:00 [INF] Executed DbCommand (14ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'Completed' AND [t].[UserId] = @__userId_0
+2025-04-22 00:03:23.152 +05:00 [INF] Successfully fetched tasks for user 13d5a5ac-aa99-4067-aecb-fadb05a212a2
+2025-04-22 00:03:23.162 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Backend.Model.TaskModel, Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 00:03:23.167 +05:00 [INF] Executed action Backend.Controllers.TaskController.GetTasks (Backend) in 1433.2718ms
+2025-04-22 00:03:23.172 +05:00 [INF] Executed endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:03:23.176 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Task - 200 null application/json; charset=utf-8 2560.5348ms
+2025-04-22 00:03:23.206 +05:00 [INF] Executed DbCommand (46ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'InProgress' AND [t].[UserId] = @__userId_0
+2025-04-22 00:03:23.222 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'Pending' AND [t].[UserId] = @__userId_0
+2025-04-22 00:03:23.231 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType7`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType6`3[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 00:03:23.239 +05:00 [INF] Executed action Backend.Controllers.DashboardController.GetDashboardData (Backend) in 218.9141ms
+2025-04-22 00:03:23.243 +05:00 [INF] Executed endpoint 'Backend.Controllers.DashboardController.GetDashboardData (Backend)'
+2025-04-22 00:03:23.246 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 200 null application/json; charset=utf-8 697.6469ms
+2025-04-22 00:03:23.329 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - application/json null
+2025-04-22 00:03:23.664 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:03:23.677 +05:00 [INF] Executing endpoint 'Backend.Controllers.DashboardController.GetDashboardData (Backend)'
+2025-04-22 00:03:23.687 +05:00 [INF] Route matched with {action = "GetDashboardData", controller = "Dashboard"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetDashboardData() on controller Backend.Controllers.DashboardController (Backend).
+2025-04-22 00:03:23.730 +05:00 [INF] Executed DbCommand (15ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'Completed' AND [t].[UserId] = @__userId_0
+2025-04-22 00:03:23.746 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'InProgress' AND [t].[UserId] = @__userId_0
+2025-04-22 00:03:23.844 +05:00 [INF] Executed DbCommand (89ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'Pending' AND [t].[UserId] = @__userId_0
+2025-04-22 00:03:23.905 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType7`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType6`3[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 00:03:23.912 +05:00 [INF] Executed action Backend.Controllers.DashboardController.GetDashboardData (Backend) in 201.0705ms
+2025-04-22 00:03:23.916 +05:00 [INF] Executed endpoint 'Backend.Controllers.DashboardController.GetDashboardData (Backend)'
+2025-04-22 00:03:23.924 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 200 null application/json; charset=utf-8 593.7923ms
+2025-04-22 00:03:52.996 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - null null
+2025-04-22 00:03:53.201 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:03:53.204 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - 204 null null 207.8769ms
+2025-04-22 00:03:53.212 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/login - application/json 52
+2025-04-22 00:03:53.240 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:03:53.241 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-22 00:03:53.243 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-22 00:03:53.262 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-22 00:03:53.566 +05:00 [INF] Executed DbCommand (19ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-22 00:03:53.704 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-22 00:03:53.740 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-22 00:03:53.746 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 498.8559ms
+2025-04-22 00:03:53.756 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-22 00:03:53.777 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/login - 200 null application/json; charset=utf-8 565.0205ms
+2025-04-22 00:03:54.013 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - null null
+2025-04-22 00:03:54.016 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - null null
+2025-04-22 00:03:54.100 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:03:54.321 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:03:54.333 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - 204 null null 458.6186ms
+2025-04-22 00:03:54.324 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - 204 null null 311.1779ms
+2025-04-22 00:03:54.354 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - application/json null
+2025-04-22 00:03:54.391 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:03:54.393 +05:00 [INF] Executing endpoint 'Backend.Controllers.DashboardController.GetDashboardData (Backend)'
+2025-04-22 00:03:54.396 +05:00 [INF] Route matched with {action = "GetDashboardData", controller = "Dashboard"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetDashboardData() on controller Backend.Controllers.DashboardController (Backend).
+2025-04-22 00:03:54.423 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'Completed'
+2025-04-22 00:03:54.443 +05:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'InProgress'
+2025-04-22 00:03:54.476 +05:00 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'Pending'
+2025-04-22 00:03:54.499 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType7`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType6`3[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 00:03:54.506 +05:00 [INF] Executed action Backend.Controllers.DashboardController.GetDashboardData (Backend) in 103.2174ms
+2025-04-22 00:03:54.509 +05:00 [INF] Executed endpoint 'Backend.Controllers.DashboardController.GetDashboardData (Backend)'
+2025-04-22 00:03:54.511 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 200 null application/json; charset=utf-8 157.0195ms
+2025-04-22 00:03:54.566 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - application/json null
+2025-04-22 00:03:54.592 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:03:54.598 +05:00 [INF] Executing endpoint 'Backend.Controllers.DashboardController.GetDashboardData (Backend)'
+2025-04-22 00:03:54.605 +05:00 [INF] Route matched with {action = "GetDashboardData", controller = "Dashboard"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetDashboardData() on controller Backend.Controllers.DashboardController (Backend).
+2025-04-22 00:03:54.621 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'Completed'
+2025-04-22 00:03:54.627 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'InProgress'
+2025-04-22 00:03:54.633 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'Pending'
+2025-04-22 00:03:54.638 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType7`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType6`3[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 00:03:54.644 +05:00 [INF] Executed action Backend.Controllers.DashboardController.GetDashboardData (Backend) in 30.5683ms
+2025-04-22 00:03:54.646 +05:00 [INF] Executed endpoint 'Backend.Controllers.DashboardController.GetDashboardData (Backend)'
+2025-04-22 00:03:54.649 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 200 null application/json; charset=utf-8 83.325ms
+2025-04-22 00:04:46.119 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - null null
+2025-04-22 00:04:46.162 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:04:46.164 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Auth/login - 204 null null 45.1191ms
+2025-04-22 00:04:46.168 +05:00 [INF] Request starting HTTP/2 POST https://localhost:7208/api/Auth/login - application/json 54
+2025-04-22 00:04:46.175 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:04:46.183 +05:00 [INF] Executing endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-22 00:04:46.186 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginModel) on controller Backend.Controllers.AuthController (Backend).
+2025-04-22 00:04:46.239 +05:00 [INF] Executed DbCommand (35ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-22 00:04:46.586 +05:00 [INF] Executed DbCommand (83ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-22 00:04:46.601 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-22 00:04:46.607 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-04-22 00:04:46.612 +05:00 [INF] Executed action Backend.Controllers.AuthController.Login (Backend) in 420.6946ms
+2025-04-22 00:04:46.619 +05:00 [INF] Executed endpoint 'Backend.Controllers.AuthController.Login (Backend)'
+2025-04-22 00:04:46.622 +05:00 [INF] Request finished HTTP/2 POST https://localhost:7208/api/Auth/login - 200 null application/json; charset=utf-8 454.5791ms
+2025-04-22 00:04:46.762 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - null null
+2025-04-22 00:04:46.765 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - null null
+2025-04-22 00:04:46.860 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:04:46.865 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:04:46.866 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - 204 null null 104.1484ms
+2025-04-22 00:04:46.868 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - 204 null null 103.1698ms
+2025-04-22 00:04:46.906 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - application/json null
+2025-04-22 00:04:46.919 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:04:46.921 +05:00 [INF] Executing endpoint 'Backend.Controllers.DashboardController.GetDashboardData (Backend)'
+2025-04-22 00:04:46.923 +05:00 [INF] Route matched with {action = "GetDashboardData", controller = "Dashboard"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetDashboardData() on controller Backend.Controllers.DashboardController (Backend).
+2025-04-22 00:04:46.945 +05:00 [INF] Executed DbCommand (15ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'Completed' AND [t].[UserId] = @__userId_0
+2025-04-22 00:04:46.955 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'InProgress' AND [t].[UserId] = @__userId_0
+2025-04-22 00:04:46.964 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'Pending' AND [t].[UserId] = @__userId_0
+2025-04-22 00:04:46.970 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType7`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType6`3[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 00:04:46.973 +05:00 [INF] Executed action Backend.Controllers.DashboardController.GetDashboardData (Backend) in 45.2363ms
+2025-04-22 00:04:46.976 +05:00 [INF] Executed endpoint 'Backend.Controllers.DashboardController.GetDashboardData (Backend)'
+2025-04-22 00:04:46.978 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 200 null application/json; charset=utf-8 72.6054ms
+2025-04-22 00:04:47.076 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - application/json null
+2025-04-22 00:04:47.108 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:04:47.111 +05:00 [INF] Executing endpoint 'Backend.Controllers.DashboardController.GetDashboardData (Backend)'
+2025-04-22 00:04:47.116 +05:00 [INF] Route matched with {action = "GetDashboardData", controller = "Dashboard"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetDashboardData() on controller Backend.Controllers.DashboardController (Backend).
+2025-04-22 00:04:47.151 +05:00 [INF] Executed DbCommand (23ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'Completed' AND [t].[UserId] = @__userId_0
+2025-04-22 00:04:47.171 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'InProgress' AND [t].[UserId] = @__userId_0
+2025-04-22 00:04:47.182 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'Pending' AND [t].[UserId] = @__userId_0
+2025-04-22 00:04:47.187 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType7`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType6`3[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 00:04:47.192 +05:00 [INF] Executed action Backend.Controllers.DashboardController.GetDashboardData (Backend) in 65.1245ms
+2025-04-22 00:04:47.194 +05:00 [INF] Executed endpoint 'Backend.Controllers.DashboardController.GetDashboardData (Backend)'
+2025-04-22 00:04:47.196 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 200 null application/json; charset=utf-8 120.6868ms
+2025-04-22 00:05:30.049 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Task - null null
+2025-04-22 00:05:30.085 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Task - null null
+2025-04-22 00:05:30.190 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:05:30.197 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:05:30.201 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Task - 204 null null 151.4219ms
+2025-04-22 00:05:30.203 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Task - 204 null null 125.9742ms
+2025-04-22 00:05:30.211 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Task - null null
+2025-04-22 00:05:30.232 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:05:30.236 +05:00 [INF] Executing endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:05:30.240 +05:00 [INF] Route matched with {action = "GetTasks", controller = "Task"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTasks() on controller Backend.Controllers.TaskController (Backend).
+2025-04-22 00:05:30.302 +05:00 [INF] Executed DbCommand (51ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-04-22 00:05:30.360 +05:00 [INF] Executed DbCommand (32ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-22 00:05:30.459 +05:00 [INF] Executed DbCommand (23ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Category], [t].[Description], [t].[DueDate], [t].[Priority], [t].[Status], [t].[Title], [t].[UserId]
+FROM [Tasks] AS [t]
+WHERE [t].[UserId] = @__userId_0
+2025-04-22 00:05:30.482 +05:00 [INF] Successfully fetched tasks for user 13d5a5ac-aa99-4067-aecb-fadb05a212a2
+2025-04-22 00:05:30.486 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Backend.Model.TaskModel, Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 00:05:30.503 +05:00 [INF] Executed action Backend.Controllers.TaskController.GetTasks (Backend) in 254.5189ms
+2025-04-22 00:05:30.520 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Task - null null
+2025-04-22 00:05:30.541 +05:00 [INF] Executed endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:05:30.551 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:05:30.575 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Task - 200 null application/json; charset=utf-8 364.4349ms
+2025-04-22 00:05:30.578 +05:00 [INF] Executing endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:05:30.592 +05:00 [INF] Route matched with {action = "GetTasks", controller = "Task"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTasks() on controller Backend.Controllers.TaskController (Backend).
+2025-04-22 00:05:30.639 +05:00 [INF] Executed DbCommand (38ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-04-22 00:05:30.949 +05:00 [INF] Executed DbCommand (27ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-22 00:05:31.133 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Category], [t].[Description], [t].[DueDate], [t].[Priority], [t].[Status], [t].[Title], [t].[UserId]
+FROM [Tasks] AS [t]
+WHERE [t].[UserId] = @__userId_0
+2025-04-22 00:05:31.156 +05:00 [INF] Successfully fetched tasks for user 13d5a5ac-aa99-4067-aecb-fadb05a212a2
+2025-04-22 00:05:31.172 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Backend.Model.TaskModel, Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 00:05:31.182 +05:00 [INF] Executed action Backend.Controllers.TaskController.GetTasks (Backend) in 583.494ms
+2025-04-22 00:05:31.190 +05:00 [INF] Executed endpoint 'Backend.Controllers.TaskController.GetTasks (Backend)'
+2025-04-22 00:05:31.194 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Task - 200 null application/json; charset=utf-8 674.3699ms
+2025-04-22 00:05:43.086 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - null null
+2025-04-22 00:05:43.089 +05:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - null null
+2025-04-22 00:05:43.425 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:05:43.431 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:05:43.437 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - 204 null null 351.4671ms
+2025-04-22 00:05:43.439 +05:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7208/api/Dashboard - 204 null null 349.7224ms
+2025-04-22 00:05:43.445 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - application/json null
+2025-04-22 00:05:43.467 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:05:43.470 +05:00 [INF] Executing endpoint 'Backend.Controllers.DashboardController.GetDashboardData (Backend)'
+2025-04-22 00:05:43.473 +05:00 [INF] Route matched with {action = "GetDashboardData", controller = "Dashboard"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetDashboardData() on controller Backend.Controllers.DashboardController (Backend).
+2025-04-22 00:05:43.501 +05:00 [INF] Executed DbCommand (18ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'Completed' AND [t].[UserId] = @__userId_0
+2025-04-22 00:05:43.529 +05:00 [INF] Executed DbCommand (14ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'InProgress' AND [t].[UserId] = @__userId_0
+2025-04-22 00:05:43.545 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'Pending' AND [t].[UserId] = @__userId_0
+2025-04-22 00:05:43.554 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType7`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType6`3[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 00:05:43.561 +05:00 [INF] Executed action Backend.Controllers.DashboardController.GetDashboardData (Backend) in 81.4368ms
+2025-04-22 00:05:43.566 +05:00 [INF] Executed endpoint 'Backend.Controllers.DashboardController.GetDashboardData (Backend)'
+2025-04-22 00:05:43.569 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 200 null application/json; charset=utf-8 124.5262ms
+2025-04-22 00:05:43.656 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/api/Dashboard - application/json null
+2025-04-22 00:05:43.763 +05:00 [INF] CORS policy execution successful.
+2025-04-22 00:05:43.766 +05:00 [INF] Executing endpoint 'Backend.Controllers.DashboardController.GetDashboardData (Backend)'
+2025-04-22 00:05:43.771 +05:00 [INF] Route matched with {action = "GetDashboardData", controller = "Dashboard"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetDashboardData() on controller Backend.Controllers.DashboardController (Backend).
+2025-04-22 00:05:43.788 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'Completed' AND [t].[UserId] = @__userId_0
+2025-04-22 00:05:43.808 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'InProgress' AND [t].[UserId] = @__userId_0
+2025-04-22 00:05:43.831 +05:00 [INF] Executed DbCommand (15ms) [Parameters=[@__userId_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+WHERE [t].[Status] = N'Pending' AND [t].[UserId] = @__userId_0
+2025-04-22 00:05:43.841 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType7`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType6`3[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-04-22 00:05:43.847 +05:00 [INF] Executed action Backend.Controllers.DashboardController.GetDashboardData (Backend) in 69.2613ms
+2025-04-22 00:05:43.851 +05:00 [INF] Executed endpoint 'Backend.Controllers.DashboardController.GetDashboardData (Backend)'
+2025-04-22 00:05:43.856 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/api/Dashboard - 200 null application/json; charset=utf-8 200.1841ms

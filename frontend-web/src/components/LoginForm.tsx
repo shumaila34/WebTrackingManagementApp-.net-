@@ -33,26 +33,17 @@ const LoginForm = () => {
       }
 
       const userData = await response.json();
-      console.log("📦 Response from backend:", userData); // 👀
-
       toast.success("Login Successful! Redirecting...");
 
-      const token =
-        userData.token && typeof userData.token === "string"
-          ? userData.token
-          : userData.token?.token || userData.token?.accessToken || null;
-
-      if (!token) {
-        throw new Error("Token not received from backend.");
-      }
-
-      localStorage.setItem("token", token);
+      localStorage.setItem("token", userData.token);
       localStorage.setItem("role", userData.role);
 
-      console.log("✅ Token saved in localStorage:", token); // ✅
-      console.log("✅ Role saved in localStorage:", userData.role); // ✅
-
-      navigate("/dashboard");
+      // Redirect based on role
+      if (userData?.role === "Admin") {
+        navigate("/dashboard");
+      } else if (userData?.role === "User") {
+        navigate("/user/dashboard");
+      }
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : "Login failed";
       setError(errorMessage);
@@ -137,13 +128,7 @@ const LoginForm = () => {
                 }`}
                 disabled={loading}
               >
-                {loading ? (
-                  <div className="flex justify-center">
-                    <div className="w-5 h-5 border-4 border-t-transparent border-blue-600 rounded-full animate-spin"></div>
-                  </div>
-                ) : (
-                  "Login"
-                )}
+                {loading ? "Logging in..." : "Login"}
               </button>
             </form>
 
