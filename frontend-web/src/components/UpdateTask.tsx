@@ -1,23 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FormEvent } from "react";
 import axios from "axios";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 
-const UpdateTask = () => {
+interface UserSelectItem {
+  text: string;
+  value: string;
+}
+
+const UpdateTask: React.FC = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("Pending");
   const [priority, setPriority] = useState("Low");
   const [dueDate, setDueDate] = useState("");
   const [category, setCategory] = useState("");
+  const [assignedToUserId, setAssignedToUserId] = useState("");
+  const [userList, setUserList] = useState<UserSelectItem[]>([]);
+  const [role, setRole] = useState("User");
   const [loading, setLoading] = useState(false);
-  const [popup, setPopup] = useState(false);
+  const [popup, setPopup] = useState(false); // For success message
+  const navigate = useNavigate();
 
-  // Use `useParams` to get the `id` from the URL
   const { id } = useParams<{ id: string }>();
-
   const token = localStorage.getItem("token");
 
   useEffect(() => {
+    const storedRole = localStorage.getItem("role");
+    if (storedRole) setRole(storedRole);
+
     const fetchTask = async () => {
       try {
         const res = await axios.get(`https://localhost:7208/api/Task/${id}`, {
@@ -29,42 +39,61 @@ const UpdateTask = () => {
         setDescription(task.description);
         setStatus(task.status);
         setPriority(task.priority);
-        setDueDate(task.dueDate?.split("T")[0]);
-        setCategory(task.category);
-      } catch (err) {
+        setDueDate(task.dueDate?.split("T")[0] || "");
+        setCategory(task.category || "");
+        setAssignedToUserId(task.assignedToUserId || "");
+      } catch (err: any) {
         console.error("Failed to fetch task:", err);
       }
     };
 
     if (id) fetchTask();
+
+    if (storedRole === "Admin") {
+      axios
+        .get<UserSelectItem[]>(
+          "https://localhost:7208/api/Task/user-select-list",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then((res) => {
+          setUserList(res.data);
+        })
+        .catch((err) => console.error("Error fetching user list:", err));
+    }
   }, [id, token]);
 
-  const handleUpdate = async (e: React.FormEvent) => {
+  const handleUpdate = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    try {
-      await axios.put(
-        `https://localhost:7208/api/Task/${id}`,
-        {
-          title,
-          description,
-          status,
-          priority,
-          dueDate: new Date(dueDate).toISOString(), // ✅ ISO string conversion
-          category,
-          userId: "", // optional
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+    const payload = {
+      title,
+      description,
+      status,
+      priority,
+      dueDate: dueDate ? new Date(dueDate).toISOString() : null,
+      category,
+      assignedToUserId,
+      userId: "",
+    };
 
-      setPopup(true);
-    } catch (error) {
+    try {
+      await axios.put(`https://localhost:7208/api/Task/${id}`, payload, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      setPopup(true); // Show success message
+      setTimeout(() => {
+        navigate(role === "Admin" ? "/admin/tasklist" : "/tasklist");
+      }, 2000); // Navigate after 2 seconds
+    } catch (error: any) {
       console.error("Error updating task:", error);
     } finally {
       setLoading(false);
@@ -72,133 +101,120 @@ const UpdateTask = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white flex justify-center items-center">
-      <div className="w-full max-w-md md:max-w-lg p-4 md:p-8">
-        <div className="mb-4 text-center">
-          <h1 className="text-2xl md:text-3xl font-bold text-blue-700">
-            Update Task
-          </h1>
-        </div>
+    <div className="min-h-screen bg-black flex justify-center items-center">
+      <div className="w-full max-w-md md:max-w-lg p-4 md:p-8 bg-gray-800 rounded-xl shadow-lg border border-gray-700">
+        <h1 className="text-2xl font-bold text-center text-blue-400 mb-6">
+          Update Task
+        </h1>
 
-        <form
-          onSubmit={handleUpdate}
-          className="space-y-4 flex flex-col items-center"
-        >
-          {/* Title */}
-          <div className="flex items-center w-full">
-            <label className="w-1/4 text-base md:text-lg font-semibold text-blue-400">
-              Title:
-            </label>
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              className="w-3/4 px-4 py-2 border-2 border-blue-400 rounded-lg focus:outline-none"
-              required
-            />
-          </div>
+        <form onSubmit={handleUpdate} className="space-y-6">
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="w-full px-5 py-3 border border-gray-600 rounded-full bg-gray-700 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Title"
+            required
+          />
 
-          {/* Description */}
-          <div className="flex items-center w-full">
-            <label className="w-1/4 text-base md:text-lg font-semibold text-blue-400">
-              Description:
-            </label>
-            <textarea
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              rows={4}
-              className="w-3/4 px-4 py-2 border-2 border-blue-400 rounded-lg focus:outline-none"
-              required
-            />
-          </div>
+          <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            className="w-full px-5 py-3 border border-gray-600 rounded-xl bg-gray-700 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Description"
+            required
+          />
 
-          {/* Status */}
-          <div className="flex items-center w-full">
-            <label className="w-1/4 text-base md:text-lg font-semibold text-blue-400">
-              Status:
-            </label>
-            <select
-              value={status}
-              onChange={(e) => setStatus(e.target.value)}
-              className="w-3/4 px-4 py-2 border-2 border-blue-400 rounded-lg focus:outline-none"
-            >
-              <option value="Pending">Pending</option>
-              <option value="In Progress">In Progress</option>
-              <option value="Completed">Completed</option>
-            </select>
-          </div>
+          <select
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+            className="w-full px-5 py-3 border border-gray-600 rounded-full bg-gray-700 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          >
+            <option value="Pending" className="bg-gray-800 text-white">
+              Pending
+            </option>
+            <option value="In Progress" className="bg-gray-800 text-white">
+              In Progress
+            </option>
+            <option value="Completed" className="bg-gray-800 text-white">
+              Completed
+            </option>
+          </select>
 
-          {/* Priority */}
-          <div className="flex items-center w-full">
-            <label className="w-1/4 text-base md:text-lg font-semibold text-blue-400">
-              Priority:
-            </label>
-            <select
-              value={priority}
-              onChange={(e) => setPriority(e.target.value)}
-              className="w-3/4 px-4 py-2 border-2 border-blue-400 rounded-lg focus:outline-none"
-            >
-              <option value="Low">Low</option>
-              <option value="Medium">Medium</option>
-              <option value="High">High</option>
-            </select>
-          </div>
+          <select
+            value={priority}
+            onChange={(e) => setPriority(e.target.value)}
+            className="w-full px-5 py-3 border border-gray-600 rounded-full bg-gray-700 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          >
+            <option value="Low" className="bg-gray-800 text-white">
+              Low
+            </option>
+            <option value="Medium" className="bg-gray-800 text-white">
+              Medium
+            </option>
+            <option value="High" className="bg-gray-800 text-white">
+              High
+            </option>
+          </select>
 
-          {/* Due Date */}
-          <div className="flex items-center w-full">
-            <label className="w-1/4 text-base md:text-lg font-semibold text-blue-400">
-              Due Date:
-            </label>
-            <input
-              type="date"
-              value={dueDate}
-              onChange={(e) => setDueDate(e.target.value)}
-              className="w-3/4 px-4 py-2 border-2 border-blue-400 rounded-lg focus:outline-none"
-            />
-          </div>
+          <input
+            type="date"
+            value={dueDate}
+            onChange={(e) => setDueDate(e.target.value)}
+            className="w-full px-5 py-3 border border-gray-600 rounded-full bg-gray-700 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          />
 
-          {/* Category */}
-          <div className="flex items-center w-full">
-            <label className="w-1/4 text-base md:text-lg font-semibold text-blue-400">
-              Category:
-            </label>
-            <input
-              type="text"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              className="w-3/4 px-4 py-2 border-2 border-blue-400 rounded-lg focus:outline-none"
-              required
-            />
-          </div>
+          <input
+            type="text"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            className="w-full px-5 py-3 border border-gray-600 rounded-full bg-gray-700 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Category"
+            required
+          />
 
-          {/* Submit */}
-          <div className="flex items-center justify-end w-full">
-            <button
-              type="submit"
-              disabled={loading}
-              className={`w-2/3 px-2 py-2 bg-blue-500 text-white rounded-lg shadow-lg hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 ${
-                loading ? "opacity-50 cursor-not-allowed" : ""
-              }`}
-            >
-              {loading ? "Updating Task..." : "Update Task"}
-            </button>
-          </div>
+          {role === "Admin" && (
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-2">
+                Assign to
+              </label>
+              <select
+                value={assignedToUserId}
+                onChange={(e) => setAssignedToUserId(e.target.value)}
+                className="w-full px-5 py-3 border border-gray-600 rounded-full bg-gray-700 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              >
+                <option value="" className="bg-gray-800 text-white">
+                  Select user
+                </option>
+                {userList.map((user) => (
+                  <option
+                    key={user.value}
+                    value={user.value}
+                    className="bg-gray-800 text-white"
+                  >
+                    {user.text}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          <button
+            type="submit"
+            className="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 rounded-full font-medium transition duration-300 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+            disabled={loading}
+          >
+            {loading ? "Updating..." : "Update Task"}
+          </button>
         </form>
 
-        {/* Success Popup */}
         {popup && (
-          <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50">
-            <div className="bg-white p-6 rounded-lg text-center max-w-sm w-[90%]">
-              <h2 className="text-xl font-bold text-blue-500">
-                Task updated successfully!
-              </h2>
-              <button
-                className="mt-4 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
-                onClick={() => setPopup(false)}
-              >
-                Close
-              </button>
-            </div>
+          <div className="mt-6 text-center text-green-400 font-semibold bg-green-500/20 p-3 rounded-md border border-green-500/30">
+            Task updated successfully!
           </div>
         )}
       </div>

@@ -82,7 +82,7 @@ const App: React.FC = () => {
         />
 
         <Route
-          path="/tasks/:id"
+          path="/task/:id"
           element={
             <ProtectedRoute isAuthenticated={isAuthenticated}>
               <Layout>

@@ -44,7 +44,7 @@ public class DashboardController : ControllerBase
             taskCounts = new
             {
                 Completed = _context.Tasks.Count(t => t.Status == "Completed"),
-                InProgress = _context.Tasks.Count(t => t.Status == "InProgress"),
+                InProgress = _context.Tasks.Count(t => t.Status == "In Progress"),
                 Pending = _context.Tasks.Count(t => t.Status == "Pending")
             };
         }

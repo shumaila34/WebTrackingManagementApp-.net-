@@ -204,17 +204,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TaskModel"
+                "$ref": "#/components/schemas/UpdateTaskDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/TaskModel"
+                "$ref": "#/components/schemas/UpdateTaskDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/TaskModel"
+                "$ref": "#/components/schemas/UpdateTaskDto"
               }
             }
           }
@@ -239,6 +239,18 @@
               "format": "int32"
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Task/user-select-list": {
+      "get": {
+        "tags": [
+          "Task"
         ],
         "responses": {
           "200": {
@@ -377,121 +389,32 @@
         },
         "additionalProperties": false
       },
-      "TaskModel": {
-        "required": [
-          "category",
-          "description",
-          "dueDate",
-          "priority",
-          "status",
-          "title"
-        ],
+      "UpdateTaskDto": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
           "title": {
-            "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "description": {
-            "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "status": {
-            "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "priority": {
-            "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "dueDate": {
             "type": "string",
             "format": "date-time"
           },
           "category": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "assignedToUserId": {
             "type": "string",
             "nullable": true
-          },
-          "assignedToUser": {
-            "$ref": "#/components/schemas/Users"
-          },
-          "createdByUserId": {
-            "type": "string",
-            "nullable": true
-          },
-          "createdByUser": {
-            "$ref": "#/components/schemas/Users"
-          }
-        },
-        "additionalProperties": false
-      },
-      "Users": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "nullable": true
-          },
-          "userName": {
-            "type": "string",
-            "nullable": true
-          },
-          "normalizedUserName": {
-            "type": "string",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "normalizedEmail": {
-            "type": "string",
-            "nullable": true
-          },
-          "emailConfirmed": {
-            "type": "boolean"
-          },
-          "passwordHash": {
-            "type": "string",
-            "nullable": true
-          },
-          "securityStamp": {
-            "type": "string",
-            "nullable": true
-          },
-          "concurrencyStamp": {
-            "type": "string",
-            "nullable": true
-          },
-          "phoneNumber": {
-            "type": "string",
-            "nullable": true
-          },
-          "phoneNumberConfirmed": {
-            "type": "boolean"
-          },
-          "twoFactorEnabled": {
-            "type": "boolean"
-          },
-          "lockoutEnd": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "lockoutEnabled": {
-            "type": "boolean"
-          },
-          "accessFailedCount": {
-            "type": "integer",
-            "format": "int32"
           }
         },
         "additionalProperties": false

@@ -5,6 +5,7 @@ using Backend.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -86,26 +87,46 @@ namespace Backend.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTask(int id)
         {
-            var task = await _context.Tasks.Include(t => t.CreatedByUser)
-                                           .FirstOrDefaultAsync(t => t.Id == id);
-
-            if (task == null)
-                return NotFound($"Task with ID {id} was not found");
-
-            var taskDto = new TaskDto
+            try
             {
-                Id = task.Id,
-                Title = task.Title,
-                Description = task.Description,
-                Status = task.Status,
-                Priority = task.Priority,
-                DueDate = task.DueDate,
-                Category = task.Category,
-                UserName = task.CreatedByUser?.UserName ?? "Unknown"
-            };
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                var user = await _userManager.FindByIdAsync(userId);
+                var roles = await _userManager.GetRolesAsync(user);
 
-            return Ok(taskDto);
+                var task = await _context.Tasks.Include(t => t.CreatedByUser)
+                                               .FirstOrDefaultAsync(t => t.Id == id);
+
+                if (task == null)
+                    return NotFound($"Task with ID {id} was not found");
+
+                if (!roles.Contains("Admin") && task.CreatedByUserId != userId)
+                {
+                    return Forbid(); // Or NotFound()
+                }
+
+                var taskDto = new TaskDto
+                {
+                    Id = task.Id,
+                    Title = task.Title,
+                    Description = task.Description,
+                    Status = task.Status,
+                    Priority = task.Priority,
+                    DueDate = task.DueDate,
+                    Category = task.Category,
+                    UserName = task.CreatedByUser?.UserName ?? "Unknown"
+                };
+
+                return Ok(taskDto);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error fetching task with ID {TaskId}", id);
+                return StatusCode(500, "Internal server error");
+            }
         }
+
+
+
 
         [Authorize]
         [HttpPost]
@@ -152,29 +173,48 @@ namespace Backend.Controllers
 
         [Authorize]
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTask(int id, [FromBody] TaskModel updated)
+        public async Task<IActionResult> UpdateTask(int id, [FromBody] UpdateTaskDto updated)
         {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var user = await _userManager.FindByIdAsync(userId);
-            var task = await _context.Tasks.FindAsync(id);
-            var roles = await _userManager.GetRolesAsync(user);
+            try
+            {
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userId))
+                    return Unauthorized("User is not authenticated.");
 
-            if (task == null)
-                return NotFound($"Task with ID {id} not found");
+                var user = await _userManager.FindByIdAsync(userId);
+                if (user == null)
+                    return Unauthorized("User not found.");
 
-            if (task.CreatedByUserId != user.Id && !roles.Contains("Admin"))
-                return Unauthorized();
+                var task = await _context.Tasks.FindAsync(id);
+                if (task == null)
+                    return NotFound($"Task with ID {id} not found");
 
-            task.Title = updated.Title;
-            task.Description = updated.Description;
-            task.Status = updated.Status;
-            task.Priority = updated.Priority;
-            task.DueDate = updated.DueDate;
-            task.Category = updated.Category;
+                var roles = await _userManager.GetRolesAsync(user);
+                if (task.CreatedByUserId != user.Id && !roles.Contains("Admin"))
+                    return Unauthorized("You are not authorized to update this task.");
 
-            await _context.SaveChangesAsync();
-            return Ok(task);
+                // Update only the allowed fields
+                task.Title = updated.Title;
+                task.Description = updated.Description;
+                task.Status = updated.Status;
+                task.Priority = updated.Priority;
+                task.DueDate = updated.DueDate;
+                task.Category = updated.Category;
+
+                await _context.SaveChangesAsync();
+
+                _logger.LogInformation("Task with ID {TaskId} updated by user {UserId}", id, user.Id);
+
+                return Ok(task);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while updating the task.");
+                return StatusCode(500, "Internal server error");
+            }
         }
+
+        
 
         [Authorize]
         [HttpDelete("{id}")]
@@ -195,5 +235,28 @@ namespace Backend.Controllers
             await _context.SaveChangesAsync();
             return NoContent();
         }
+
+        public class UserSelectDto
+        {
+            public string Text { get; set; }
+            public string Value { get; set; }
+
+
+        }
+
+        [HttpGet("user-select-list")]
+        public async Task<IActionResult> GetUserSelectList()
+        {
+            var users = _context.Users.Select(u => new UserSelectDto
+            {
+                Text = u.UserName!,
+                Value = u.Id
+            }).ToList();
+
+            return Ok(users);
+        }
+
+
+
     }
 }

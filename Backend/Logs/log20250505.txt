@@ -1,0 +1,22 @@
+2025-05-05 23:51:42.899 +05:00 [INF] User profile is available. Using 'C:\Users\usman electronics\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-05-05 23:51:48.344 +05:00 [INF] Executed DbCommand (169ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-05-05 23:51:48.574 +05:00 [INF] Executed DbCommand (25ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-05-05 23:51:49.807 +05:00 [INF] Now listening on: https://localhost:7208
+2025-05-05 23:51:49.809 +05:00 [INF] Now listening on: http://localhost:5237
+2025-05-05 23:51:50.101 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-05 23:51:50.121 +05:00 [INF] Hosting environment: Development
+2025-05-05 23:51:50.128 +05:00 [INF] Content root path: C:\Users\usman electronics\source\repos\Backend\Backend
+2025-05-05 23:51:51.994 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/index.html - null null
+2025-05-05 23:51:52.745 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/index.html - 200 null text/html;charset=utf-8 772.6607ms
+2025-05-05 23:51:52.886 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_vs/browserLink - null null
+2025-05-05 23:51:52.886 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - null null
+2025-05-05 23:51:52.923 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 37.9758ms
+2025-05-05 23:51:53.476 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/_vs/browserLink - 200 null text/javascript; charset=UTF-8 590.6382ms
+2025-05-05 23:51:53.635 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - null null
+2025-05-05 23:51:54.358 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7208/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 722.3366ms

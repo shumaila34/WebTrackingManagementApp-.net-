@@ -124,7 +124,7 @@
       },
       {
         "Name": "updated",
-        "Type": "TaskModel",
+        "Type": "Backend.DTO.UpdateTaskDto",
         "IsRequired": true
       }
     ],
@@ -144,6 +144,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Backend.Controllers.TaskController",
+    "Method": "GetUserSelectList",
+    "RelativePath": "api/Task/user-select-list",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

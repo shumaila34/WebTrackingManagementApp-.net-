@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+import { motion } from "framer-motion";
 
 // Interfaces
 interface TaskCounts {
-  Completed: number;
-  InProgress: number;
-  Pending: number;
+  completed: number;
+  inProgress: number;
+  pending: number;
 }
 
 interface DashboardData {
@@ -18,7 +26,7 @@ interface DashboardProps {
   role: string;
 }
 
-const COLORS = ["#3b82f6", "#f59e0b", "#10b981"]; // Blue, Yellow, Green
+const COLORS = ["#4F46E5", "#F59E0B", "#10B981"]; // Tailwind Indigo, Amber, Emerald
 
 const UserDashboard: React.FC<DashboardProps> = ({ role }) => {
   const [data, setData] = useState<DashboardData | null>(null);
@@ -52,6 +60,8 @@ const UserDashboard: React.FC<DashboardProps> = ({ role }) => {
         }
 
         const result: DashboardData = await response.json();
+        console.log({ result });
+
         setData(result);
       } catch (err) {
         if (err instanceof Error) {
@@ -69,89 +79,146 @@ const UserDashboard: React.FC<DashboardProps> = ({ role }) => {
 
   const chartData = data
     ? [
-        { name: "Completed", value: data.taskCounts.Completed },
-        { name: "In Progress", value: data.taskCounts.InProgress },
-        { name: "Pending", value: data.taskCounts.Pending },
+        { name: "Completed", value: data.taskCounts.completed },
+        { name: "In Progress", value: data.taskCounts.inProgress },
+        { name: "Pending", value: data.taskCounts.pending },
       ]
     : [];
+  console.log({ data });
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeInOut" },
+    },
+    hover: { scale: 1.03, transition: { duration: 0.2 } },
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300 flex flex-col items-center justify-start py-12 px-4">
-      {/* Header Section */}
-      <div className="w-full max-w-5xl flex flex-col sm:flex-row justify-between items-center mb-6">
-        <h1 className="text-4xl font-bold text-blue-800 mb-4 sm:mb-0 text-center w-full">
-          {role === "Admin" ? "Admin Dashboard" : "User Dashboard"}
-        </h1>
-        <button
-          onClick={() => navigate("/tasklist")}
-          className="px-6 py-2 bg-blue-700 hover:bg-blue-900 text-white rounded-lg font-semibold transition duration-300 shadow-md"
-        >
-          {role === "Admin" ? "Manage Tasks" : " Tasks"}
-        </button>
-      </div>
-
-      {/* Error Message */}
-      {error && (
-        <div className="bg-red-200 text-red-800 px-6 py-3 rounded-lg mb-6">
-          {error}
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black p-4 sm:p-6">
+      <div className="max-w-7xl mx-auto space-y-8">
+        {/* Header Section */}
+        <div className="flex flex-col sm:flex-row items-center justify-between">
+          <h1 className="text-4xl font-bold text-white mb-4 sm:mb-0 text-center">
+            {role === "Admin" ? "Admin Dashboard" : "User Dashboard"}
+          </h1>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => navigate("/tasklist")}
+            className="w-64 py-3 px-8 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 text-white rounded-full font-bold tracking-wide shadow-lg hover:shadow-2xl hover:brightness-110 active:brightness-90 transition-all duration-300 ring-2 ring-white/20"
+          >
+            {role === "Admin" ? "Manage Tasks" : "Tasks"}
+          </motion.button>
         </div>
-      )}
 
-      {/* Cards */}
-      {data ? (
-        <>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full max-w-5xl">
+        {/* Error Message */}
+        {error && (
+          <div className="bg-red-500/10 border border-red-500/20 text-red-400 px-6 py-3 rounded-lg">
+            {error}
+          </div>
+        )}
+
+        {/* Cards */}
+        {data ? (
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-6"
+          >
             {/* Completed */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 text-center transform transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:border-blue-500 border-2 border-transparent">
-              <h2 className="text-lg text-gray-500 mb-1">Completed</h2>
-              <p className="text-4xl font-bold text-blue-700">
-                {data.taskCounts.Completed}
-              </p>
-            </div>
+            <motion.div variants={cardVariants} whileHover="hover">
+              <div className="bg-white/5 backdrop-blur-md border border-white/10 shadow-xl rounded-lg">
+                <div className="p-6">
+                  <h2 className="text-lg text-gray-300 text-center">
+                    Completed
+                  </h2>
+                </div>
+                <div className="p-6 pt-0">
+                  <p className="text-4xl font-bold text-blue-400 text-center">
+                    {data.taskCounts.completed}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
 
             {/* In Progress */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 text-center transform transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:border-blue-500 border-2 border-transparent">
-              <h2 className="text-lg text-gray-500 mb-1">In Progress</h2>
-              <p className="text-4xl font-bold text-yellow-500">
-                {data.taskCounts.InProgress}
-              </p>
-            </div>
+            <motion.div variants={cardVariants} whileHover="hover">
+              <div className="bg-white/5 backdrop-blur-md border border-white/10 shadow-xl rounded-lg">
+                <div className="p-6">
+                  <h2 className="text-lg text-gray-300 text-center">
+                    In Progress
+                  </h2>
+                </div>
+                <div className="p-6 pt-0">
+                  <p className="text-4xl font-bold text-yellow-400 text-center">
+                    {data.taskCounts.inProgress}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
 
             {/* Pending */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 text-center transform transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:border-blue-500 border-2 border-transparent">
-              <h2 className="text-lg text-gray-500 mb-1">Pending</h2>
-              <p className="text-4xl font-bold text-green-500">
-                {data.taskCounts.Pending}
-              </p>
-            </div>
-          </div>
+            <motion.div variants={cardVariants} whileHover="hover">
+              <div className="bg-white/5 backdrop-blur-md border border-white/10 shadow-xl rounded-lg">
+                <div className="p-6">
+                  <h2 className="text-lg text-gray-300 text-center">Pending</h2>
+                </div>
+                <div className="p-6 pt-0">
+                  <p className="text-4xl font-bold text-green-400 text-center">
+                    {data.taskCounts.pending}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        ) : (
+          <p className="text-gray-400 text-lg mt-8">Loading Dashboard...</p>
+        )}
 
-          {/* Pie Chart */}
-          <div className="mt-12 bg-white rounded-2xl shadow-xl p-6">
-            <PieChart width={350} height={350}>
-              <Pie
-                data={chartData}
-                cx="50%"
-                cy="50%"
-                outerRadius={100}
-                dataKey="value"
-                label={({ percent }) => `${(percent * 100).toFixed(0)}%`}
-              >
-                {chartData.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <Tooltip />
-              <Legend layout="horizontal" verticalAlign="top" align="center" />
-            </PieChart>
+        {/* Pie Chart */}
+        {data && (
+          <div className="mt-12 bg-white/5 backdrop-blur-md rounded-2xl shadow-xl p-6">
+            <ResponsiveContainer width="100%" height={350}>
+              <PieChart>
+                <Pie
+                  data={chartData}
+                  cx="50%"
+                  cy="50%"
+                  outerRadius={150}
+                  dataKey="value"
+                  label={({ percent }) => `${(percent * 100).toFixed(0)}%`}
+                >
+                  {chartData.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "#222",
+                    borderColor: "#444",
+                    color: "#fff",
+                    borderRadius: "0.5rem",
+                  }}
+                  labelStyle={{ fontWeight: "bold", color: "#fff" }}
+                  itemStyle={{ color: "#fff" }}
+                />
+                <Legend
+                  layout="horizontal"
+                  verticalAlign="bottom"
+                  align="center"
+                  wrapperStyle={{ color: "#fff" }}
+                />
+              </PieChart>
+            </ResponsiveContainer>
           </div>
-        </>
-      ) : (
-        <p className="text-gray-600 text-lg mt-8">Loading Dashboard...</p>
-      )}
+        )}
+      </div>
     </div>
   );
 };

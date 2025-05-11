@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
+import { User, Lock, ArrowRight, AlertCircle } from "lucide-react";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -54,91 +55,100 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-white">
+    <div className="flex items-center justify-center min-h-screen bg-gray-900">
       <div className="w-full max-w-md px-4">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="relative bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100"
+          className="bg-white/5 backdrop-blur-md rounded-2xl shadow-2xl p-8 border border-white/10"
         >
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600"></div>
+          <h2 className="text-3xl font-bold text-white text-center mb-6">
+            Welcome Back
+          </h2>
+          <p className="text-gray-400 text-center mb-8">
+            Login to your account to continue
+          </p>
 
-          <div className="px-8 pt-12 pb-10">
-            <h2 className="text-2xl font-bold text-gray-800 text-center">
-              Welcome Back
-            </h2>
-            <p className="text-gray-500 text-sm text-center mb-6">
-              Login to continue
-            </p>
+          {error && (
+            <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-4 rounded-lg mb-6 flex items-start gap-2">
+              <AlertCircle className="h-5 w-5 mt-0.5 flex-shrink-0" />
+              <div>{error}</div>
+            </div>
+          )}
 
-            {error && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                className="mb-4 p-3 rounded-lg bg-red-50 border-l-4 border-red-400 text-red-600 text-sm"
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="space-y-2">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-300"
               >
-                {error}
-              </motion.div>
-            )}
-
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="group">
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Email
-                </label>
+                Email
+              </label>
+              <div className="relative">
                 <input
                   id="email"
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="block w-full px-3 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 bg-gray-50 text-gray-900"
+                  className="block w-full px-5 py-3 border border-gray-700 rounded-full focus:ring-2 focus:ring-blue-500 bg-black/20 text-white placeholder:text-gray-500 transition-all duration-300"
                   required
+                  placeholder="Enter your email"
                 />
+                <User className="absolute right-4 top-3 h-5 w-5 text-gray-400" />
               </div>
-
-              <div className="group">
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Password
-                </label>
+            </div>
+            <div className="space-y-2">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-300"
+              >
+                Password
+              </label>
+              <div className="relative">
                 <input
                   id="password"
                   type="password"
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
-                  className="block w-full px-3 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 bg-gray-50 text-gray-900"
+                  className="block w-full px-5 py-3 border border-gray-700 rounded-full focus:ring-2 focus:ring-blue-500 bg-black/20 text-white placeholder:text-gray-500 transition-all duration-300"
                   required
+                  placeholder="Enter your password"
                 />
+                <Lock className="absolute right-4 top-3 h-5 w-5 text-gray-400" />
               </div>
+            </div>
+            <button
+              type="submit"
+              className={`w-full py-3 text-white font-semibold rounded-full transition-all duration-300 flex items-center justify-center gap-2 ${
+                loading
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
+              }`}
+              disabled={loading}
+            >
+              {loading ? (
+                "Logging in..."
+              ) : (
+                <>
+                  Login
+                  <ArrowRight className="h-5 w-5" />
+                </>
+              )}
+            </button>
+          </form>
 
-              <button
-                type="submit"
-                className={`w-full py-3 text-white font-medium rounded-lg transition ${
-                  loading
-                    ? "bg-gray-400 cursor-not-allowed"
-                    : "bg-blue-600 hover:bg-blue-700"
-                }`}
-                disabled={loading}
-              >
-                {loading ? "Logging in..." : "Login"}
-              </button>
-            </form>
-
-            <p className="mt-5 text-sm text-center text-gray-600">
-              Don’t have an account?{" "}
-              <a href="/signup" className="text-blue-500 hover:underline">
-                Sign up
-              </a>
-            </p>
-          </div>
+          <p className="mt-6 text-sm text-center text-gray-400">
+            Don’t have an account?{" "}
+            <a
+              href="/signup"
+              className="text-blue-300 hover:underline font-medium transition-colors"
+            >
+              Sign up
+            </a>
+          </p>
         </motion.div>
       </div>
     </div>

@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserCircle } from "lucide-react"; // For the profile icon
+
+interface UserData {
+  name: string;
+  email: string;
+  role: string;
+}
 
 const UserProfile: React.FC = () => {
-  const [userData, setUserData] = useState<any | null>(null);
+  const [userData, setUserData] = useState<UserData | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [newPassword, setNewPassword] = useState<string>(""); // To handle password input
-  const [errorMessage, setErrorMessage] = useState<string | null>(null); // Error message for password update
   const navigate = useNavigate();
 
   // Fetch user info on component mount
@@ -28,14 +33,20 @@ const UserProfile: React.FC = () => {
         });
 
         if (!response.ok) {
+          console.error(
+            "Failed to fetch user data",
+            response.status,
+            response.statusText
+          );
           throw new Error("Failed to fetch user data.");
         }
 
         const result = await response.json();
         setUserData(result);
-      } catch (err) {
+      } catch (err: any) {
         if (err instanceof Error) {
           setError(err.message);
+          console.error("Error fetching user data:", err.message);
         }
       }
     };
@@ -50,103 +61,63 @@ const UserProfile: React.FC = () => {
     navigate("/login");
   };
 
-  // Handle password change
-  const handlePasswordChange = async () => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-      return;
-    }
-
-    try {
-      const response = await fetch(
-        "https://localhost:7208/api/Profile/change-password",
-        {
-          method: "PUT",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ newPassword }),
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to change password.");
-      }
-
-      setNewPassword(""); // Clear the password input field
-      setErrorMessage(null); // Clear any previous error messages
-      alert("Password changed successfully.");
-    } catch (err) {
-      if (err instanceof Error) {
-        setErrorMessage(err.message);
-      }
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10">
-      <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-md">
-        <h1 className="text-2xl font-semibold text-center text-blue-600 mb-6">
-          User Profile
-        </h1>
-
-        {error && (
-          <div className="bg-red-100 text-red-700 p-3 rounded mb-6 text-center">
-            {error}
+    <div className="min-h-screen bg-black flex items-center justify-center py-10">
+      <div className="w-full max-w-md">
+        <div className="bg-gray-800 rounded-xl shadow-lg p-6 border border-gray-700">
+          <div className="flex items-center justify-center mb-6">
+            <UserCircle className="w-20 h-20 text-blue-400 stroke-2" />
           </div>
-        )}
+          <h1 className="text-3xl font-semibold text-center text-white mb-8">
+            User Profile
+          </h1>
 
-        {userData ? (
-          <>
-            <div className="mb-6">
-              <h2 className="text-lg font-medium text-gray-800">
-                User Details
-              </h2>
-              <p className="text-gray-600">Name: {userData.name}</p>
-              <p className="text-gray-600">Email: {userData.email}</p>
-              <p className="text-gray-600">Role: {userData.role}</p>
+          {error && (
+            <div
+              className="bg-red-900 border border-red-700 text-red-300 px-4 py-3 rounded-md relative mb-4"
+              role="alert"
+            >
+              <strong className="font-bold">Error: </strong>
+              <span className="block sm:inline">{error}</span>
             </div>
+          )}
 
-            {/* Password Change Form */}
-            <div className="mb-6">
-              <h2 className="text-lg font-medium text-gray-800">
-                Change Password
-              </h2>
-              {errorMessage && (
-                <div className="bg-red-100 text-red-700 p-3 rounded mb-4 text-center">
-                  {errorMessage}
+          {userData ? (
+            <>
+              <div className="mb-8 space-y-4">
+                <h2 className="text-lg font-medium text-gray-300">
+                  User Details
+                </h2>
+                <div className="space-y-2">
+                  <p className="text-gray-200">
+                    <span className="font-semibold text-gray-400">Name:</span>{" "}
+                    {userData.name}
+                  </p>
+                  <p className="text-gray-200">
+                    <span className="font-semibold text-gray-400">Email:</span>{" "}
+                    {userData.email}
+                  </p>
+                  <p className="text-gray-200">
+                    <span className="font-semibold text-gray-400">Role:</span>{" "}
+                    {userData.role}
+                  </p>
                 </div>
-              )}
-              <input
-                type="password"
-                className="w-full p-3 border border-gray-300 rounded-lg mb-4"
-                placeholder="New Password"
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
-              />
-              <button
-                onClick={handlePasswordChange}
-                className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm font-medium transition"
-              >
-                Change Password
-              </button>
-            </div>
+              </div>
 
-            {/* Logout Button */}
-            <div className="text-center">
-              <button
-                onClick={handleLogout}
-                className="px-6 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md text-sm font-medium transition"
-              >
-                Logout
-              </button>
-            </div>
-          </>
-        ) : (
-          <p className="text-center text-gray-500">Loading user data...</p>
-        )}
+              {/* Logout Button */}
+              <div className="text-center">
+                <button
+                  onClick={handleLogout}
+                  className="w-full px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full text-lg font-semibold transition duration-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 shadow-lg"
+                >
+                  Logout
+                </button>
+              </div>
+            </>
+          ) : (
+            <p className="text-center text-gray-400">Loading user data...</p>
+          )}
+        </div>
       </div>
     </div>
   );

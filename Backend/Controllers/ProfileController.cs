@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace TaskManagementSystem.Controllers
@@ -24,37 +25,47 @@ namespace TaskManagementSystem.Controllers
         }
 
         // 👤 GET: api/Profile
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetProfile()
         {
             try
             {
-                var email = User.Identity?.Name; // Get the user's email from the current identity
-                var user = await _userManager.FindByEmailAsync(email); // Fetch the user based on email
-
-                if (user == null)
+                // Step 1: Get userId from token claims
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userId))
                 {
-                    _logger.LogWarning("User with email {Email} not found while fetching profile", email);
-                    return NotFound("User not found");
+                    _logger.LogWarning("User ID not found in claims.");
+                    return Unauthorized("User is not authenticated.");
                 }
 
+                // Step 2: Find user by ID
+                var user = await _userManager.FindByIdAsync(userId);
+                if (user == null)
+                {
+                    _logger.LogWarning("User with ID {UserId} not found while fetching profile", userId);
+                    return NotFound("User not found.");
+                }
+
+                // Step 3: Return profile data
                 var profile = new
                 {
                     user.UserName,
                     user.Email,
-                    user.PhoneNumber,
-                    user.Id
+                    // Add other properties here if needed
                 };
 
-                _logger.LogInformation("Fetched profile for user {UserId}", user.Id); // Log successful profile fetch
+                _logger.LogInformation("Successfully fetched profile for user {UserId}", userId);
                 return Ok(profile);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "An error occurred while fetching profile for user");
-                return StatusCode(500, "Internal server error");
+                _logger.LogError(ex, "An error occurred while fetching profile for user.");
+                return StatusCode(500, "Internal server error.");
             }
         }
+
+
 
         // 🔐 PUT: api/Profile/change-password
         [HttpPut("change-password")]
